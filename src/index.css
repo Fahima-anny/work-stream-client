@@ -24,11 +24,18 @@
   }
 
   .para{
-    color: rgb(206, 206, 206);
+    color: rgb(235, 235, 235);
   }
 
   nav .link {
     color: rgb(95, 95, 95);
+  }
+
+  .menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
+    background-color: transparent;
+    text-decoration: underline;
+    font-weight: 600;
+    color: white;
   }
 
   /* #banner .hero-content {

@@ -30,7 +30,9 @@ const Home = () => {
           <FAQ></FAQ>
           </div>
 
-          <Footer></Footer>
+       <div className="overflow-hidden">
+       <Footer></Footer>
+       </div>
 
         </div>
     );

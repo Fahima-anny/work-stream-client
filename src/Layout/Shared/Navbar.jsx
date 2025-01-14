@@ -1,13 +1,14 @@
 import { FaUnlockAlt } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
 
     const links = <>
-       <li><a>Home</a></li>
-       <li><a>Dashboard</a></li>
-       <li><a>Contacts</a></li>
+       <li><NavLink to="/">Home</NavLink></li>
+       <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+       <li><NavLink to="/contacts">Contacts</NavLink></li>
     </>
 
     return (
@@ -41,7 +42,7 @@ const Navbar = () => {
     <a className="md:text-2xl rounded-tl-xl rounded-br-xl py-1 px-1 md:px-3 border-l-4 border-l-white border-b-4 border-b-white  font-serif bg-black"><span className="font-semibold">Work</span><span className="text-blue-600 font-black">Stream</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1 font-semibold">
+    <ul className="menu menu-horizontal px-1 font-">
 {links}
     </ul>
   </div>

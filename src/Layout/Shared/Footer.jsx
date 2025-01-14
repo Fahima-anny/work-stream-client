@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <div className="bg-base-200">
-            <footer className="footer mx-auto max-w-screen-xl text-base-content p-10">
+            <footer className="footer mx-auto max-w-screen-xl text-base-content px-10 md:px-3 xl:px-0 py-10">
   <nav>
     <h6 className="footer-title text-blue-600 opacity-100">Services</h6>
     <a className="link link-hover">Branding</a>
@@ -24,7 +24,8 @@ const Footer = () => {
     <a className="link link-hover">Privacy policy</a>
     <a className="link link-hover">Cookie policy</a>
   </nav>
-  <form>
+ <div className="w-full md:flex justify-end">
+ <form className="">
     <h6 className="footer-title text-blue-600 opacity-100">Newsletter</h6>
     <fieldset className="form-control w-80">
       <label className="label">
@@ -39,10 +40,11 @@ const Footer = () => {
       </div>
     </fieldset>
   </form>
+ </div>
 </footer>
 <footer className="footer footer-center bg-base-200 text-black p-4 border-t-2 border-t-gray-300">
   <aside>
-    <p className="text-gray-600">Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+    <p className="text-gray-600">Copyright © {new Date().getFullYear()} - All right reserved by WorkStream</p>
   </aside>
 </footer>
         </div>
