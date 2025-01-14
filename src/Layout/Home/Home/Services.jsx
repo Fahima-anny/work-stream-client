@@ -21,7 +21,7 @@ const Services = () => {
   <IoBarChartSharp className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-700">HR Analytics & Reporting</h2>
+    <h2 className="card-title font-bold text-blue-500">HR Analytics & Reporting</h2>
     <p className="text-gray-600">We Provide detailed reports and insights on key HR metrics like performance, turnover rates, and workforce trends.</p>
     <div className="card-actions">
    <button></button>
@@ -35,7 +35,7 @@ const Services = () => {
   <FaSackDollar className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-700">Payroll Management</h2>
+    <h2 className="card-title font-bold text-blue-500">Payroll Management</h2>
     <p className="text-gray-600">Automate salary calculations, tax deductions, and payroll processing to ensure timely payments and compliance.</p>
     <div className="card-actions">
    <button></button>
@@ -49,7 +49,7 @@ const Services = () => {
   <FaCalendarDays className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-700">Attendance & Time Tracking</h2>
+    <h2 className="card-title font-bold text-blue-500">Attendance & Time Tracking</h2>
     <p className="text-gray-600">Track employee attendance, work hours, and overtime to improve workforce productivity and reduce errors.</p>
     <div className="card-actions">
    <button></button>
@@ -63,7 +63,7 @@ const Services = () => {
   <GoLaw className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-700">Compliance & Legal Support</h2>
+    <h2 className="card-title font-bold text-blue-500">Compliance & Legal Support</h2>
     <p className="text-gray-600">Ensure all employee management practices comply with labor laws and regulations, with document storage and audit trails.</p>
     <div className="card-actions">
    <button></button>

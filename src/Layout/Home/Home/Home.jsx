@@ -15,8 +15,8 @@ const Home = () => {
 
           <div className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0 space-y-5 md:space-y-24">
           <Services></Services>
-          <Testimonials></Testimonials>
           </div>
+          <Testimonials></Testimonials>
 
 
         </div>
