@@ -4,6 +4,8 @@ import Contacts from "../Layout/Home/Contacts/Contacts";
 import Main from "./Main";
 import Login from "../Layout/AuthLayout/Login";
 import Register from "../Layout/AuthLayout/Register";
+import PrivateRoute from "../Authentication/VerifiesRoutes/PrivateRoute";
+import Dashboard from "../Layout/Dashboard/Dashboard/Dashboard";
   
   const router = createBrowserRouter([
     {
@@ -29,6 +31,10 @@ import Register from "../Layout/AuthLayout/Register";
         },
       ]
     },
+    {
+      path: 'dashboard',
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+    }
   ]);
 
   export default router ;

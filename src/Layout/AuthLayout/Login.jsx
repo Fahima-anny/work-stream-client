@@ -1,10 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FcGoogle } from "react-icons/fc";
 import { MdLogin } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
+
+    const {loginUser} = useAuth() ;
+const navigate = useNavigate() ;
+const destination = location?.state || '/' ;
 
 const handleLogin = e => {
     e.preventDefault() ;
@@ -12,6 +18,18 @@ const handleLogin = e => {
     const email = form.email.value ;
     const pass = form.pass.value ;
     console.log(email, pass);
+
+        // login user 
+        loginUser(email, pass)
+        .then(res => {
+          // console.log(res.user);
+          toast.success(`Welcome ${res?.user?.displayName}`)
+          navigate(destination) ;
+        })
+        .catch(er => {
+          console.log(er);
+          toast.error(er.message.replace("Firebase:", "").trim())
+        })
 }
 
 
