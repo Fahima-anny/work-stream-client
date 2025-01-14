@@ -27,6 +27,10 @@
     color: rgb(206, 206, 206);
   }
 
+  nav .link {
+    color: rgb(95, 95, 95);
+  }
+
   /* #banner .hero-content {
     align-items: end;
     border: 1px solid red;
