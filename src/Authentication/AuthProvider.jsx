@@ -44,6 +44,7 @@ const auth = getAuth(app)
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            console.log("current user : ", currentUser);
             setLoading(false) ;
         })
         return () => unSubscribe();
@@ -57,7 +58,7 @@ const auth = getAuth(app)
         loginUser,
         signUp,
         googleLogin,
-        
+
     }
 
     return (
