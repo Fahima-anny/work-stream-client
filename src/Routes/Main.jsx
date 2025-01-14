@@ -6,9 +6,15 @@ import Navbar from "../Layout/Shared/Navbar";
 const Main = () => {
     return (
         <div>
+
             <Navbar></Navbar>
-<Outlet></Outlet>
-            <Footer></Footer>
+
+            <Outlet></Outlet>
+
+            <div className="overflow-hidden">
+                <Footer></Footer>
+            </div>
+            
         </div>
     );
 };

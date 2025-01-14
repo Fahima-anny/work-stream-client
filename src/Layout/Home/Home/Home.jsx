@@ -1,5 +1,4 @@
-import Footer from "../../Shared/Footer";
-import Navbar from "../../Shared/Navbar";
+
 import AboutUs from "./AboutUs";
 import Banner from "./Banner";
 import FAQ from "./FAQ";
@@ -10,7 +9,6 @@ import Testimonials from "./Testimonials";
 const Home = () => {
     return (
         <div className="">
-            <Navbar></Navbar>
 
           <div className="pb-20">
           <Banner></Banner>
@@ -30,9 +28,6 @@ const Home = () => {
           <FAQ></FAQ>
           </div>
 
-       <div className="overflow-hidden">
-       <Footer></Footer>
-       </div>
 
         </div>
     );

@@ -6,21 +6,23 @@ const Contacts = () => {
         <div className="">
            
            <div
-       data-aos="fade-left"
+      //  data-aos="fade-left"
         className="hero md:h-[80vh]"
         style={{
           backgroundImage: "url(https://i.ibb.co.com/dpCJcTC/pexels-olly-789822.jpg)",
         }}>
         <div className="hero-overlay bg-black bg-opacity-60"></div>
         <div className=" w-full pl-32 text-white">
-          <div className="max-w-xl">
+          <div className="max-w-xl border-l-[5px] border-l-blue-700 pl-4 py-2">
             <h1 className="mb-5 text-5xl md:text-5xl font-bold">Let's Get Connected</h1>
             <p className="para">Have questions or need assistance? Connect with us through our contact section. We’re dedicated to providing timely support and addressing your concerns to ensure a seamless experience with our platform.</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto md:mt-10 px-3 md:px-0"  data-aos="fade-right">
+      <div className="max-w-screen-xl mx-auto md:mt-10 px-3 md:px-0" 
+      //  data-aos="fade-right"
+       >
         <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen pb-10  pt-10">
           {/* Contact Details Section */}
           <div className="bg-white lg:h-[80vh] py-6 lg:w-1/3 w-full mb-6 lg:mb-0">

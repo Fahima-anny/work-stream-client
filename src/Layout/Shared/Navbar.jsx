@@ -1,6 +1,6 @@
 import { FaUnlockAlt } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -47,8 +47,8 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-2">
-  <button className="px-4 hover:bg-[#02061156] duration-300 py-1  border rounded-md md:w-28 flex gap-2 items-center">Login <FiLogIn className="text-lg"/></button>
-  <button className="px-4 hidden md:flex hover:bg-[#02061156] duration-300 py-1  border rounded-md gap-2 items-center ">Register <FaUnlockAlt className="text-lg"/></button>
+  <Link to='/login' className="px-4 hover:bg-[#02061156] duration-300 py-1  border rounded-md md:w-28 flex gap-2 items-center">Login <FiLogIn className="text-lg"/></Link>
+  <Link to='/register' className="px-4 hidden md:flex hover:bg-[#02061156] duration-300 py-1  border rounded-md gap-2 items-center ">Register <FaUnlockAlt className="text-lg"/></Link >
   </div>
 </div>
         </div>
