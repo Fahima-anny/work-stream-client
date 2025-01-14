@@ -1,6 +1,6 @@
 import { TiArrowForward } from "react-icons/ti";
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -9,6 +9,8 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useEffect, useState } from "react";
+import Rating from "react-rating";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const Testimonials = () => {
 
@@ -26,7 +28,7 @@ const Testimonials = () => {
 
             <div className="text-center mx-auto max-w-4xl">
                 <h3 className="w-fit mx-auto bg-blue-100 border border-blue-700 rounded-lg py-1 px-2 text-blue-600 font-semibold flex items-center"><TiArrowForward className="text-2xl" /> Testimonial </h3>
-                <h1 className="my-5 text-2xl md:text-5xl font-bold font-serif">Success Stories</h1>
+                <h1 className="my-5 text-2xl md:text-4xl font-bold font-serif">Success Stories</h1>
                 <p className="text-gray-600">Our services ensure seamless employee management with advanced tools, improving productivity, simplifying workflows, and fostering a collaborative work environment.</p>
             </div>
 
@@ -56,8 +58,16 @@ alt="" />
                         </div>
                         <div className="text-center space-y-2 pt-3">
                             <h1 className="font-bold text-3xl text-blue-500">{test.name}</h1>
-                            <h1 className="font-bold text-2xl">Ratings: {test.rating}</h1>
-                            <p className="text-gray-600 max-w-4xl mx-auto py-3">{test.description}</p>
+                            <h1 className="font-bold text-xl flex gap-3 items-center justify-center">Ratings: 
+                            <Rating
+   className="text-yellow-500 text-3xl "
+   initialRating={test.rating}
+   emptySymbol={<FaRegStar className="icon" />}
+   fullSymbol={<FaStar className="icon" />}
+   readonly
+   />   
+    <span className="text-gray-400">({test.rating})</span></h1>
+                            <p className="text-gray-600 max-w-52 md:max-w-4xl mx-auto py-3">{test.description}</p>
                            <div>
                            <h1 className="font-bold text-lg ">{test.workingCompany}</h1>
                            <h1 className="text-gray-600 italic">--{test.designation}--</h1>

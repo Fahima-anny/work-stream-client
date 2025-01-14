@@ -12,7 +12,7 @@
       "id": 2,
       "name": "Michael Smith",
       "img": "https://i.ibb.co.com/p4XJHdc/premium-photo-1672239496412-ab605befa53f.jpg",
-      "rating": 5.0,
+      "rating": 4,
       "workingCompany": "Innovatech",
       "designation": "HR Manager",
       "description": "This solution is a game-changer! Managing payroll, attendance, and employee data has never been so easy. The automated processes saved us time and minimized errors, enabling us to focus on more strategic tasks that help our business grow."
@@ -21,7 +21,7 @@
       "id": 3,
       "name": "Sophia Lee",
       "img": "https://i.ibb.co.com/WcfPkrj/p7.jpg",
-      "rating": 4.7,
+      "rating": 4.5,
       "workingCompany": "FutureWorks",
       "designation": "Team Lead",
       "description": "An exceptional tool for employee engagement and performance tracking. It simplified goal management, increased productivity, and greatly enhanced collaboration. This platform’s features have helped align our team’s objectives, improving efficiency and overall team satisfaction."
