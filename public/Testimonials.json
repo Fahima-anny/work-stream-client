@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "img": "https://i.ibb.co.com/sWQcSfZ/Perfocal-17-11-2019-TYWFAQ-100-standard-3.jpg",
+      "rating": 4.8,
+      "workingCompany": "TechCorp",
+      "designation": "Software Engineer",
+      "description": "The platform revolutionized our workflow, making employee management effortless and boosting overall productivity across the organization."
+    },
+    {
+      "id": 2,
+      "name": "Michael Smith",
+      "img": "https://i.ibb.co.com/p4XJHdc/premium-photo-1672239496412-ab605befa53f.jpg",
+      "rating": 5.0,
+      "workingCompany": "Innovatech",
+      "designation": "HR Manager",
+      "description": "This solution is a game-changer! Managing payroll and attendance has never been so smooth and straightforward before."
+    },
+    {
+      "id": 3,
+      "name": "Sophia Lee",
+      "img": "https://i.ibb.co.com/WcfPkrj/p7.jpg",
+      "rating": 4.7,
+      "workingCompany": "FutureWorks",
+      "designation": "Team Lead",
+      "description": "Exceptional tool for employee engagement and performance tracking. It simplified managing team goals and enhanced collaboration immensely."
+    },
+    {
+      "id": 4,
+      "name": "James Wilson",
+      "img": "https://i.ibb.co.com/q93ftrR/p8.jpg",
+      "rating": 4.9,
+      "workingCompany": "BrightPath Solutions",
+      "designation": "Operations Manager",
+      "description": "The analytics dashboard provides crucial insights into workforce trends, helping us make informed decisions efficiently and confidently."
+    },
+    {
+      "id": 5,
+      "name": "Emma Davis",
+      "img": "https://i.ibb.co.com/6rbGnJW/istockphoto-1437816897-612x612.jpg",
+      "rating": 4.8,
+      "workingCompany": "PrimeTech",
+      "designation": "Project Manager",
+      "description": "User-friendly and highly efficient. The employee self-service portal has been a major boost to team satisfaction and morale."
+    }
+  ]
+  

@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.banner-rounded {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .banner-rounded::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100px; /* Adjust the height for the depth of the curve */
+    background: white; /* Match the background color of the next section */
+    /* clip-path: path(
+      "M0 0C200 100 500 120 800 120C1300 70 1600 50 1600 0L1440 320L0 320Z"
+    ); */
+    clip-path: path(
+  "M0,0 C450,140 1080,140 1600,0 L1440,320 L0,320 Z"
+);
+  }
+
+  .para{
+    color: rgb(206, 206, 206);
+  }
+
+  /* #banner .hero-content {
+    align-items: end;
+    border: 1px solid red;
+    padding-top: 100px;
+  } */
+  
