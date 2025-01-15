@@ -12,7 +12,7 @@ const Contacts = () => {
           backgroundImage: "url(https://i.ibb.co.com/dpCJcTC/pexels-olly-789822.jpg)",
         }}>
         <div className="hero-overlay bg-black bg-opacity-60"></div>
-        <div className=" w-full pl-32 text-white">
+        <div className=" w-full pt-24 md:pl-32 text-white">
           <div className="max-w-xl border-l-[5px] border-l-blue-700 pl-4 py-2">
             <h1 className="mb-5 text-5xl md:text-5xl font-bold">Let's Get Connected</h1>
             <p className="para">Have questions or need assistance? Connect with us through our contact section. We’re dedicated to providing timely support and addressing your concerns to ensure a seamless experience with our platform.</p>

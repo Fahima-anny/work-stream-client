@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 
@@ -14,6 +14,7 @@ const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const Register = () => {
 
     const { signUp , updateUserInfo} = useAuth();
+const axiosPublic = useAxiosPublic() ;
 
     const { register, handleSubmit } = useForm()
     const onSubmit = async (data) => {
@@ -29,7 +30,7 @@ const Register = () => {
             return
         }
         const imageFile = { image: data.image[0] }
-        const res = await axios.post(img_hosting_api, imageFile, {
+        const res = await axiosPublic.post(img_hosting_api, imageFile, {
             headers: {
                 "content-type": "multipart/form-data"
             }
@@ -57,7 +58,7 @@ const userInfo = {
     isVerified: false,
     isActive: true
 }
-axios.post("http://localhost:5000/users", userInfo)
+axiosPublic.post("/users", userInfo)
 .then(res => {
     console.log(res.data);
 })
@@ -141,7 +142,7 @@ axios.post("http://localhost:5000/users", userInfo)
                             </label>
                             <select required defaultValue='Employee'  {...register("role", { required: true })} className="select select-bordered w-full max-w-xs">
                                 <option value="Employee">Employee</option>
-                                <option value="HR (Human Resource)">HR (Human Resource)</option>
+                                <option value="HR">HR</option>
                             </select>
                         </div>
                         <div className="form-control">
