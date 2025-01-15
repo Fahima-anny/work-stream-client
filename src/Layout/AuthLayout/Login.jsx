@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Login = () => {
 
@@ -19,10 +20,12 @@ const Login = () => {
     });
   }, []);
 
-    const {loginUser, googleLogin} = useAuth() ;
+    const {loginUser, googleLogin, user} = useAuth() ;
+    const axiosPublic = useAxiosPublic() ;
 const navigate = useNavigate() ;
 const location = useLocation() ;
 const destination = location?.state || '/' ;
+
 
 const handleLogin = e => {
     e.preventDefault() ;
@@ -45,39 +48,69 @@ const handleLogin = e => {
 }
 
 const handleGoogleLoginPopup = () => {
+  
+// first do google login
+googleLogin()
+.then(res => {
+  console.log(res.user)
+  // console.log(res.user.photoURL)
+  // setUserPhoto(res?.user?.photoURL) ;
+  // toast.success(`Welcome ${res.user.displayName}`)
+  // navigate(destination) ;
+
+const userInfo = {
+  email: res.user.email,
+  name: res.user.displayName
+}
+axiosPublic.post("/users",userInfo)
+.then(response => {
+  console.log(response.data);
+
+  //  if he is not in userDB it will insert and open profile update modal 
+  if(response.data.insertedId){
   document.getElementById('my_modal_5').showModal()
+  }
+  else{
+      toast.success(`Welcome ${res.user.displayName}`)
+    navigate(destination)
+  }
+})
+})
+.catch(er => {
+  console.log(er)
+})
 }
 
 const handleGoogleLogin = (e) => {
+// update user info in db 
  e.preventDefault() ;
-
  const form = e.target ;
  const salary = form.salary.value ;
  const designation = form.designation.value ;
  const bankAcc = form.bankAcc.value ;
- const employee = form.employee.value ;
- console.log(salary, bankAcc, designation, employee);
+//  const employee = form.employee.value ;
+ console.log(salary, bankAcc, designation);
 
- document.getElementById('my_modal_5').close() ;
- form.reset() ;
-//   googleLogin()
-//   .then(res => {
-//     console.log(res.user)
-//     // console.log(res.user.photoURL)
-//     // setUserPhoto(res?.user?.photoURL) ;
-
-//     // toast.success(`Welcome ${res.user.displayName}`)
-
-//     // navigate(destination) ;
-// })
-// .catch(er => {
-//     console.log(er)
-// })
+const updatedInfo = {
+  salary, designation, bankAcc, image:user.photoURL
 }
 
-const handleClosePopup = () => {
+axiosPublic.put(`/users/${user?.email}`, updatedInfo)
+.then(res => {
+  console.log(res.data);
   document.getElementById('my_modal_5').close() ;
+  form.reset() ;
+  navigate(destination) ;
+  toast.success(`Welcome ${user?.displayName}`)
+})
+.catch(er => {
+  console.log(er);
+})
 }
+
+// const handleClosePopup = () => {
+//   document.getElementById('my_modal_5').close() ;
+// }
 
     return (
         <div className="max-w-screen-xl mx-auto pt-36 pb-20">
@@ -117,12 +150,18 @@ const handleClosePopup = () => {
 {/* <button className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>open modal</button> */}
 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box relative">
-    <button onClick={handleClosePopup} className="absolute top-5 right-5 text-3xl text-red-500"><IoMdCloseCircle /></button>
+    <button
+    //  onClick={handleClosePopup} 
+    className="absolute top-5 right-5 text-3xl text-red-500"><IoMdCloseCircle /></button>
     <h3 className="font-bold text-2xl text-blue-600 text-center">Login With Google</h3>
     <p className="py-4 text-gray-500 text-center">Please complete the form to proceed</p>
     <div className="modal-action">
       <form onSubmit={handleGoogleLogin} method="dialog" className="flex flex-col justify-center w-full gap-3">
-                        <div className="form-control">
+
+
+        {/* will update after getting marks  */}
+
+                        {/* <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Role</span>
                             </label>
@@ -130,7 +169,8 @@ const handleClosePopup = () => {
                                 <option value="Employee">Employee</option>
                                 <option value="HR">HR</option>
                             </select>
-                        </div>
+                        </div> */}
+
       <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Designation</span>

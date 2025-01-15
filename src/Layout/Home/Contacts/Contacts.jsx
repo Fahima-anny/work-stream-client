@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import emailjs from '@emailjs/browser';
 
 const Contacts = () => {
 
@@ -64,7 +65,7 @@ const Contacts = () => {
         <div className="">
            
            <div
-       data-aos="fade-left"
+       data-aos="fade-right"
         className="hero md:h-[80vh]"
         style={{
           backgroundImage: "url(https://i.ibb.co.com/dpCJcTC/pexels-olly-789822.jpg)",
@@ -79,7 +80,7 @@ const Contacts = () => {
       </div>
 
       <div className="max-w-screen-xl mx-auto px-3 md:px-0" 
-       data-aos="fade-right"
+       data-aos="fade-left"
        >
         <div className="flex flex-col lg:flex-row py-16">
           {/* Contact Details Section */}
@@ -155,7 +156,7 @@ const Contacts = () => {
                 ></textarea>
               </div>
               {/* Submit Button */}
-                <button className="btn bg-blue-100 hover:bg-blue-200 duration-300 text-blue-700">Send Message</button>
+                <button className="btn bg-blue-100 hover:bg-blue-200 duration-300 text-blue-700">Send Message </button>
             </form>
           </div>
         </div>
