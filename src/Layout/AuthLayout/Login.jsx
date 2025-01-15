@@ -4,11 +4,22 @@ import { MdLogin } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const Login = () => {
 
-    const {loginUser} = useAuth() ;
+  useEffect(() => {
+    AOS.init({
+      duration: 2500,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
+    const {loginUser, googleLogin} = useAuth() ;
 const navigate = useNavigate() ;
 const location = useLocation() ;
 const destination = location?.state || '/' ;
@@ -33,6 +44,40 @@ const handleLogin = e => {
         })
 }
 
+const handleGoogleLoginPopup = () => {
+  document.getElementById('my_modal_5').showModal()
+}
+
+const handleGoogleLogin = (e) => {
+ e.preventDefault() ;
+
+ const form = e.target ;
+ const salary = form.salary.value ;
+ const designation = form.designation.value ;
+ const bankAcc = form.bankAcc.value ;
+ const employee = form.employee.value ;
+ console.log(salary, bankAcc, designation, employee);
+
+ document.getElementById('my_modal_5').close() ;
+ form.reset() ;
+//   googleLogin()
+//   .then(res => {
+//     console.log(res.user)
+//     // console.log(res.user.photoURL)
+//     // setUserPhoto(res?.user?.photoURL) ;
+
+//     // toast.success(`Welcome ${res.user.displayName}`)
+
+//     // navigate(destination) ;
+// })
+// .catch(er => {
+//     console.log(er)
+// })
+}
+
+const handleClosePopup = () => {
+  document.getElementById('my_modal_5').close() ;
+}
 
     return (
         <div className="max-w-screen-xl mx-auto pt-36 pb-20">
@@ -61,12 +106,60 @@ const handleLogin = e => {
           <button className="btn bg-blue-500 text-white hover:text-black hover:bg-blue-500 duration-500 "><MdLogin className="text-2xl" />Login</button>
           <div className="divider">or</div>
           <button 
-        //   onClick={handleGoogleLogin} 
+          onClick={handleGoogleLoginPopup} 
           className="btn duration-500"><FcGoogle className="text-2xl" />Login with Google</button>
         </div>
         <p className="text-center">Don't have an account? <Link to='/register' className="text-blue-500 font-semibold underline hover:text-black duration-500">Register</Link></p>
       </form>
            </div>
+
+{/* Open the modal using document.getElementById('ID').showModal() method */}
+{/* <button className="btn" onClick={()=>document.getElementById('my_modal_5').showModal()}>open modal</button> */}
+<dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box relative">
+    <button onClick={handleClosePopup} className="absolute top-5 right-5 text-3xl text-red-500"><IoMdCloseCircle /></button>
+    <h3 className="font-bold text-2xl text-blue-600 text-center">Login With Google</h3>
+    <p className="py-4 text-gray-500 text-center">Please complete the form to proceed</p>
+    <div className="modal-action">
+      <form onSubmit={handleGoogleLogin} method="dialog" className="flex flex-col justify-center w-full gap-3">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Role</span>
+                            </label>
+                            <select required defaultValue='Employee' name="employee" className="select select-bordered w-full">
+                                <option value="Employee">Employee</option>
+                                <option value="HR">HR</option>
+                            </select>
+                        </div>
+      <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Designation</span>
+                            </label>
+                            <select required defaultValue='Sales Assistant' className="select select-bordered w-full " name="designation">
+                                <option value="Sales Assistant">Sales Assistant</option>
+                                <option value="Social Media executive">Social Media executive</option>
+                                <option value="Digital Marketer"> Digital Marketer</option>
+                                <option value="HR (Human Resource)">HR </option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+      <div className="form-control">
+      <label className="label">
+            <span className="label-text">Bank Account No.</span>
+          </label>
+        <input required type="number" className="input input-bordered" name="bankAcc"  />
+        </div>
+      <div className="form-control">
+      <label className="label">
+            <span className="label-text">Salary</span>
+          </label>
+        <input required type="number" name="salary" className="input input-bordered"  />
+        </div>
+        <button className="btn">Continue</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
         </div>
     );

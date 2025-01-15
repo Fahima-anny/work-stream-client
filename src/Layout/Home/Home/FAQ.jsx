@@ -1,7 +1,17 @@
 import { TiArrowForward } from "react-icons/ti";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const FAQ = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
     return (
         <>
          <div className="text-center mx-auto max-w-4xl  md:pb-10">

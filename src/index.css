@@ -35,7 +35,8 @@
     background-color: transparent;
     text-decoration: underline;
     font-weight: 600;
-    color: rgb(43, 100, 255);
+    color: rgb(104, 144, 255);
+    /* background-color: rgba(255, 255, 255, 0.595); */
   }
 
   /* #banner .hero-content {

@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-        <div className="bg-base-200">
+        <div data-aos="fade-right" className="bg-base-200">
             <footer className="footer mx-auto max-w-screen-xl text-base-content px-10 md:px-3 xl:px-0 py-10">
   <nav>
     <h6 className="footer-title text-blue-600 opacity-100">Services</h6>

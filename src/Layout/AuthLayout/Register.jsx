@@ -5,8 +5,9 @@ import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-
-
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
@@ -15,6 +16,14 @@ const Register = () => {
 
     const { signUp , updateUserInfo} = useAuth();
 const axiosPublic = useAxiosPublic() ;
+
+  useEffect(() => {
+    AOS.init({
+      duration: 2500,
+      once: true,
+      offset: 100,
+    });
+  }, []);
 
     const { register, handleSubmit } = useForm()
     const onSubmit = async (data) => {
@@ -81,7 +90,7 @@ axiosPublic.post("/users", userInfo)
     return (
         <div className="max-w-screen-xl mx-auto pt-36 pb-20">
 
-            <div data-aos="fade-right" className="card py-5 bg-base-100 w-full max-w-3xl mx-auto shadow-xl shadow-base-300">
+            <div data-aos="fade-left" className="card py-5 bg-base-100 w-full max-w-3xl mx-auto shadow-xl shadow-base-300">
                 <a className=" text-center font-bold text-3xl font-serif">Work<span className="text-blue-500">Stream</span></a>
                 <h2 className="text-gray-400 text-center mt-2">Create a new account</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -149,8 +158,7 @@ axiosPublic.post("/users", userInfo)
                             <label className="label">
                                 <span className="label-text">Designation</span>
                             </label>
-                            <select required defaultValue='default'  {...register("designation", { required: true })} className="select select-bordered w-full max-w-xs">
-                                <option disabled value="default" className="">Select Your Designation</option>
+                            <select required defaultValue='Sales Assistant'  {...register("designation", { required: true })} className="select select-bordered w-full max-w-xs">
                                 <option value="Sales Assistant">Sales Assistant</option>
                                 <option value="Social Media executive">Social Media executive</option>
                                 <option value="Digital Marketer"> Digital Marketer</option>
