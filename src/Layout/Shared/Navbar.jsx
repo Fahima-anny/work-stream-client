@@ -64,9 +64,28 @@ const Navbar = () => {
         <div className="navbar-end gap-2">
           {
             user
-              ? <button
-                onClick={handleLogout}
-                className="px-4 hover:bg-[#02061156] duration-300 py-1  border rounded-md md:w-28 flex gap-2 items-center">Log Out</button>
+              ? <>
+                {
+                  user && <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                    <img
+                      tabIndex={0} role="button"
+                      className="m-1 w-12 h-12 object-cover object-center rounded-full bg-white"
+                      src={user?.photoURL} alt="" />
+                  <div
+                  className="dropdown-content menu bg-base-100 rounded-box z-[1]  px-3 py-5 space-y-3 shadow"
+                  >
+                    <h2 className="text-black font-semibold text-xl">{user?.displayName}</h2>
+                    <h2 className=" text-gray-500">{user?.email}</h2>
+                    <button
+                      tabIndex={0}
+                      onClick={handleLogout}
+                      className=" px-4 hover:bg-blue-600 bg-blue-500 duration-300 
+                      py-2 border rounded-md w-full font-semibold">Log Out</button>
+                      </div>
+                  </div>
+                }
+
+              </>
               : <>
                 <Link to='/login' className="px-4 hover:bg-[#02061156] duration-300 py-1  border rounded-md md:w-28 flex gap-2 items-center">Login <FiLogIn className="text-lg" /></Link>
                 <Link to='/register' className="px-4 hidden md:flex hover:bg-[#02061156] duration-300 py-1  border rounded-md gap-2 items-center ">Register <FaUnlockAlt className="text-lg" /></Link >

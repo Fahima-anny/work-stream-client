@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { FcGoogle } from "react-icons/fc";
 import { MdLogin } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,7 @@ const Login = () => {
 
     const {loginUser} = useAuth() ;
 const navigate = useNavigate() ;
+const location = useLocation() ;
 const destination = location?.state || '/' ;
 
 const handleLogin = e => {
