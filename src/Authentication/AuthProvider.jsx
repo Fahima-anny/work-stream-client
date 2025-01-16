@@ -8,6 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 
 const AuthProvider = ({ children }) => {
 
+    // const [profilePic, setProfilePic] = useState(null)
+    // const [profileName, setProfileName] = useState(null)
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
@@ -58,6 +60,8 @@ console.log(userData?.data);
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            // setProfilePic(currentUser?.photoURL) ;
+            // setProfileName(currentUser?.displayName)
             console.log("current user : ", currentUser);
             if(currentUser && userData.data){
             //   get token and save in client side 

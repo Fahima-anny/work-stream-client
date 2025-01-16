@@ -70,16 +70,15 @@ const userInfo = {
     isVerified: false,
     isActive: true
 }
+
 axiosPublic.post("/users", userInfo)
 .then(res => {
     console.log(res.data);
+    navigate('/') ;
+    toast.success(`Welcome ${userInfo?.name}`)
 })
-
-
                             // setUserName(name)
                             // setUserPhoto(photo)
-                            // navigate('/') ;
-                                //   toast.success(`Welcome ${res?.user?.displayName}`)
                         })
                         .catch(er => console.log(er))                    }
                 })

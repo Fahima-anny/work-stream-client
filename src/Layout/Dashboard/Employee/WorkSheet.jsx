@@ -7,10 +7,14 @@ import Swal from "sweetalert2";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import useUserWorkSheet from "../../../Hooks/useUserWorkSheet";
-
+import { IoMdCloseCircle } from "react-icons/io";
+import { FiEdit } from "react-icons/fi";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const WorkSheet = () => {
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
@@ -25,7 +29,17 @@ const WorkSheet = () => {
     //     enabled: !!user?.email
     // })
     const [sort, setSort] = useState([]) ;
+    const [editWorkData, setEditWorkData] = useState(null) ;
     
+  useEffect(() => {
+    AOS.init({
+      duration: 2500,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
+
 useEffect(() => {
     const sorted = [...userWorkSheet].sort((a,b) =>  new Date(b.date) - new Date(a.date))
     setSort(sorted) ;
@@ -64,9 +78,43 @@ useEffect(() => {
 
     }
 
-    const handleEditWork = (id) =>{
-       axiosSecure.patch("/work-sheet", )
+    const handleEditWork = (work) =>{
+        setIsModalOpen(true);
+        setEditWorkData(work) ;
+        setSelectedDate(work.date)
+        console.log(work);
     }
+
+const handleEditWorkSheet = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const task = form.task.value;
+    const hoursWorked = form.hoursWorked.value;
+    // console.log(task, hoursWorked);
+    const updatedWorkSheetData = {
+        task,
+        hoursWorked,
+        email: user.email,
+        date: selectedDate
+    }
+    console.log(updatedWorkSheetData);
+      axiosSecure.patch(`/work-sheet/${editWorkData._id}`, updatedWorkSheetData )
+       .then(res => {
+        console.log(res.data);
+        //  if success close modal 
+        if(res.data.modifiedCount >0){
+      setIsModalOpen(false);
+            refetch() ;
+            Swal.fire({
+                icon: "success",
+                title: "Your work has been Updated",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+       })
+}
+
     const handleDeleteWork = (id) =>{
 // console.log(id);
 Swal.fire({
@@ -96,6 +144,8 @@ Swal.fire({
 
     }
 
+    console.log(editWorkData);
+
     if(userWorkPending){
         return <div className="min-h-[80vh] flex justify-center items-center">
         <span className="loading loading-dots loading-lg"></span>
@@ -104,9 +154,10 @@ Swal.fire({
 
     return (
         <div className="">
-                <h1 className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">Work Sheet</h1>
+                <h1 data-aos="fade-left" className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">Work Sheet</h1>
 
-          <div className="p-5 rounded-xl bg-base-200 mb-5">
+          <div data-aos="fade-right"
+          className="p-5 rounded-xl bg-base-200 mb-5">
                 <form onSubmit={handleSubmit} >
                     <label className="label">
                         <span className="label-text font-medium">Add a New Work Query</span>
@@ -141,9 +192,9 @@ Swal.fire({
                 </form>
             </div>
 
-<div className="p-5 rounded-xl bg-base-200 mb-5">
+<div data-aos="fade-left" className="p-5 rounded-xl bg-base-200 mb-5">
 <div className="overflow-x-auto">
-  <table className="table bg-white">
+  <table data-aos="fade-left" className="table bg-white">
     {/* head */}
     <thead>
       <tr>
@@ -156,7 +207,7 @@ Swal.fire({
       </tr>
     </thead>
     <tbody>
-      {sort?.map((work, idx) =>    <tr key={work._id}>
+      {sort?.map((work, idx) =>    <tr  key={work._id}>
         <th>{idx+1}</th>
         <td>{work.task}</td>
         <td>{work.hoursWorked} hr.</td>
@@ -166,7 +217,7 @@ Swal.fire({
       .join(".")} {/* Replace "/" with "." */}</td>
         <td>
             <button 
-            onClick={() => handleEditWork(work._id)}
+            onClick={() => handleEditWork(work)}
             ><FaEdit className="text-xl text-blue-600 ml-3" /></button>
         </td>
         <td>
@@ -181,6 +232,61 @@ Swal.fire({
 </div>
 </div>
 
+{/* modal  */}
+{isModalOpen && (
+        <div className="modal modal-open modal-bottom sm:modal-middle">
+          <div className="modal-box relative">
+            <button
+              onClick={() => setIsModalOpen(false)} // Close modal
+              className="absolute top-5 right-5 text-3xl text-red-500"
+            >
+              <IoMdCloseCircle />
+            </button>
+            <h3 className="font-bold text-2xl text-blue-600 text-center">
+              Edit Your Work Data
+            </h3>
+            <p className="py-4 text-gray-500 text-center">
+              Please complete the form to proceed
+            </p>
+            <div className="modal-action">
+              <form
+                onSubmit={handleEditWorkSheet}
+                className="flex flex-col justify-center w-full gap-3"
+              >
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Task</span>
+                  </label>
+                  <select required defaultValue={editWorkData?.task} className="select select-bordered w-full " name="task">
+                                <option disabled value="Select Your Task">Select Your Task</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Support">Support</option>
+                                <option value="Content"> Content</option>
+                                <option value="Marketing">Marketing </option>
+                                <option value="Paper Work">Paper Work</option>
+                            </select>
+                </div>
+                <div className="form-control ">
+                            <input type="number" name="hoursWorked" defaultValue={editWorkData?.hoursWorked} className="input input-bordered" required />
+                        </div>
+                        {/* Date Picker */}
+                        <div className="form-control ">
+
+                            <DatePicker
+                                selected={selectedDate}
+                                onChange={(date) => setSelectedDate(date)}
+                                className="input input-bordered w-full"
+                                dateFormat="yyyy/MM/dd"
+                                required
+                            />
+                        </div>
+          
+                <button  type="submit" className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Edit <FiEdit className="text-xl" /></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
         </div>
     );

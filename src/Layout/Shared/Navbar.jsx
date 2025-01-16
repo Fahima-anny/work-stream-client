@@ -66,13 +66,13 @@ const Navbar = () => {
             user
               ? <>
                 {
-                  user && <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                  user && <div className="dropdown dropdown-hover dropdown-bottom dropdown-end ">
                     <img
                       tabIndex={0} role="button"
                       className="m-1 w-12 h-12 object-cover object-center rounded-full"
                       src={user?.photoURL} alt="" />
                   <div
-                  className="dropdown-content menu bg-base-100 rounded-box z-[1]  px-3 py-5 space-y-3 shadow"
+                  className="dropdown-content menu bg-base-100 rounded-box z-[1]  px-3 py-5 space-y-3 shadow min-w-[220px]"
                   >
                     <h2 className="text-black font-semibold text-xl">{user?.displayName}</h2>
                     <h2 className=" text-gray-500">{user?.email}</h2>
