@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from '../../../Hooks/useAdmin'
+import { MdOutlineMenu } from "react-icons/md";
 
 // import useAuth from "../../../Hooks/useAuth";
 
@@ -29,11 +30,11 @@ if(roleLoading){
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content ">
     {/* Page content here */}
-    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
-      Open drawer
+    <label htmlFor="my-drawer-2" className=" drawer-button  lg:hidden">
+    <MdOutlineMenu className="text-3xl m-3"/>
     </label>
 
-<div className="max-w-5xl mx-auto py-10 min-h-screen">
+<div className="max-w-5xl mx-auto px-3 xl:px-0 py-0 lg:py-10 min-h-screen">
 <Outlet></Outlet>
 </div>
 

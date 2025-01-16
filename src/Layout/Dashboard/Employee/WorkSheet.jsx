@@ -1,37 +1,79 @@
+import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import useUserWorkSheet from "../../../Hooks/useUserWorkSheet";
 
 
 const WorkSheet = () => {
 
-    const {user} = useAuth() ;
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const [userWorkSheet, userWorkPending, refetch] = useUserWorkSheet() ;
+    // const {data: userWorkSheet, isPending: userWorkPending , refetch} = useQuery({
+    //     queryKey: [user.email, 'userWorkSheet'],
+    //     queryFn: async () => {
+    //         const result = await axiosSecure.get(`/work-sheet/${user?.email}`) ;
+    //         console.log(result?.data);
+    //         return result?.data
+    //     },
+    //     enabled: !!user?.email
+    // })
 
-const handleSubmit = e => {
-    e.preventDefault() ;
-    const form = e.target ;
-    const task = form.task.value ;
-    const hoursWorked = form.hoursWorked.value ;
-    console.log(task, hoursWorked);
-    const workSheetData = {
-        task , hoursWorked, email: user.email , date: 
+    console.log(userWorkSheet);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const form = e.target;
+        const task = form.task.value;
+        const hoursWorked = form.hoursWorked.value;
+        // console.log(task, hoursWorked);
+        const workSheetData = {
+            task,
+            hoursWorked,
+            email: user.email,
+            date: selectedDate.toISOString()
+        }
+        console.log(workSheetData);
+        axiosSecure.post("/work-sheet", workSheetData)
+        .then(res => {
+            console.log(res.data);
+            if(res.data.insertedId){
+                Swal.fire({
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
+        .catch(er => console.log(er))
+
     }
-}
+
+    if(userWorkPending){
+        return <div className="min-h-[80vh] flex justify-center items-center">
+        <span className="loading loading-dots loading-lg"></span>
+       </div>
+    }
 
     return (
         <div className="">
-           <h1 className=""></h1>
-                      <div className="">
-                       <h1 className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">Work Sheet</h1>
-                      </div>
+                <h1 className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">Work Sheet</h1>
 
-<div>
-    <form onSubmit={handleSubmit} >
-          <label className="label">
-            <span className="label-text font-medium">Add a New Work Query</span>
-          </label>
-        <div className="grid md:grid-cols-5 gap-3">
-    <div className="form-control col-span-2">
-    <select required defaultValue='Select Your Task' className="select select-bordered w-full " name="task">
+          <div className="p-5 rounded-xl bg-base-200 mb-5">
+                <form onSubmit={handleSubmit} >
+                    <label className="label">
+                        <span className="label-text font-medium">Add a New Work Query</span>
+                    </label>
+                    <div className="grid md:grid-cols-4 gap-3">
+                        <div className="form-control ">
+                            <select required defaultValue='Select Your Task' className="select select-bordered w-full " name="task">
                                 <option disabled value="Select Your Task">Select Your Task</option>
                                 <option value="Sales">Sales</option>
                                 <option value="Support">Support</option>
@@ -39,14 +81,61 @@ const handleSubmit = e => {
                                 <option value="Marketing">Marketing </option>
                                 <option value="Paper Work">Paper Work</option>
                             </select>
-        </div>
-    <div className="form-control col-span-2">
-          <input type="number" name="hoursWorked" placeholder="Hours Worked" className="input input-bordered" required />
-        </div>
-        <input type="submit" value="Submit" className="btn bg-blue-100 hover:bg-blue-200 duration-300 text-blue-700"/>
-        </div>
-    </form>
+                        </div>
+                        <div className="form-control ">
+                            <input type="number" name="hoursWorked" placeholder="Hours Worked" className="input input-bordered" required />
+                        </div>
+                        {/* Date Picker */}
+                        <div className="form-control ">
+
+                            <DatePicker
+                                selected={selectedDate}
+                                onChange={(date) => setSelectedDate(date)}
+                                className="input input-bordered w-full"
+                                dateFormat="yyyy/MM/dd"
+                                required
+                            />
+                        </div>
+                        <input type="submit" value="Submit" className="btn bg-blue-100 hover:bg-blue-200 duration-300 text-blue-700" />
+                    </div>
+                </form>
+            </div>
+
+<div className="p-5 rounded-xl bg-base-200 mb-5">
+<div className="overflow-x-auto">
+  <table className="table bg-white">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Task</th>
+        <th>Working Hours</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {userWorkSheet.map((work, idx) =>    <tr key={work._id}>
+        <th>{idx+1}</th>
+        <td>{work.task}</td>
+        <td>{work.hoursWorked} hr.</td>
+        <td>{work.date.toLocaleDateString("en-GB") // Convert to DD/MM/YYYY format
+      .split("/")
+      .join(".")}</td>
+        <td>
+            <button><FaEdit className="text-xl text-blue-600 ml-3" /></button>
+        </td>
+        <td>
+        <button><RiDeleteBin6Line className="text-xl text-red-600 ml-3" /></button>
+        </td>
+      </tr>)}
+   
+    </tbody>
+  </table>
 </div>
+</div>
+
 
         </div>
     );
