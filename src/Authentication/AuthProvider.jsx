@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from "../../firebase.config";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const AuthProvider = ({ children }) => {
 
@@ -59,17 +59,25 @@ console.log(userData?.data);
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             console.log("current user : ", currentUser);
-            if(currentUser){
+            if(currentUser && userData.data){
             //   get token and save in client side 
             const userInfo = { email: currentUser.email , role: userData?.data}
+            axiosPublic.post("/jwt", userInfo)
+            .then(res => {
+                if(res.data.token){
+                    localStorage.setItem("access-token", res.data.token)
+                    setLoading(false) ;
+                }
+            })
             }
             else{
             //   remove token 
-            }
+            localStorage.removeItem("access-token")
             setLoading(false) ;
+            }
         })
         return () => unSubscribe();
-    }, [auth, userData?.data])
+    }, [auth, userData?.data, axiosPublic])
 
     const authInfo = {
         user,

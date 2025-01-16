@@ -1,39 +1,39 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from '../../../Hooks/useAdmin'
-import useHR from "../../../Hooks/useHR";
+
 // import useAuth from "../../../Hooks/useAuth";
 
 const Dashboard = () => {
 
-const [isAdmin , isAdminLoading] = useAdmin() ;
-const [isHR, isHRLoading] = useHR() ;
+const [role , roleLoading] = useAdmin() ;
+// const [isHR, isHRLoading] = useHR() ;
 // const {user} = useAuth() ;
 
-console.log(isHR);
+console.log(role);
 
-if(isAdminLoading){
+if(roleLoading){
     return <div className="min-h-[80vh] flex justify-center items-center">
     <span className="loading loading-dots loading-lg"></span>
    </div>
 }
 
-if(isHRLoading){
-    return <div className="min-h-[80vh] flex justify-center items-center">
-    <span className="loading loading-dots loading-lg"></span>
-   </div>
-}
+// if(isHRLoading){
+//     return <div className="min-h-[80vh] flex justify-center items-center">
+//     <span className="loading loading-dots loading-lg"></span>
+//    </div>
+// }
 
     return (
         <div>
        <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-  <div className="drawer-content flex flex-col items-center justify-center">
+  <div className="drawer-content ">
     {/* Page content here */}
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
       Open drawer
     </label>
 
-<div>
+<div className="max-w-5xl mx-auto py-10 min-h-screen">
 <Outlet></Outlet>
 </div>
 
@@ -50,23 +50,24 @@ if(isHRLoading){
    <p className="pt-2 font-semibold text-2xl text-center">Employee Management</p>
    </div>
 
-{
 
-    isAdmin 
-    ? <>
+
+   { role === "admin"  
+    && <>
     <li><NavLink to="/dashboard/all-employee-list">All Employee List</NavLink></li>
     <li><NavLink to={`/dashboard/payroll`}>Payroll</NavLink></li>
    </>
-    : isHR 
-    ? <>
+   }
+  {   role === "HR" 
+    && <>
     <li><NavLink to="/dashboard/employee-list">Employee List</NavLink></li>
     <li><NavLink to={`/dashboard/progress`}>Progress</NavLink></li>
-   </>
-    : <>
+   </>}
+ {  role === "Employee"  && <>
      <li><NavLink to="/dashboard/work-sheet">Work Sheet</NavLink></li>
      <li><NavLink to="/dashboard/payment-history">Payment History</NavLink></li>
-    </>
-}
+    </>}
+
 
      
     </ul>

@@ -179,7 +179,7 @@ axiosPublic.put(`/users/${user?.email}`, updatedInfo)
                                 <option value="Sales Assistant">Sales Assistant</option>
                                 <option value="Social Media executive">Social Media executive</option>
                                 <option value="Digital Marketer"> Digital Marketer</option>
-                                <option value="HR (Human Resource)">HR </option>
+                                {/* <option value="HR (Human Resource)">HR </option> */}
                                 <option value="Others">Others</option>
                             </select>
                         </div>

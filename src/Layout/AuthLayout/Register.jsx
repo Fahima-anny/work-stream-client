@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { MdLogin } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
@@ -8,13 +8,16 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { toast } from "react-toastify";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
 const Register = () => {
 
-    const { signUp , updateUserInfo} = useAuth();
+    const { signUp , updateUserInfo, user, googleLogin} = useAuth();
+    const navigate = useNavigate() ;
 const axiosPublic = useAxiosPublic() ;
 
   useEffect(() => {
@@ -84,6 +87,63 @@ axiosPublic.post("/users", userInfo)
         }
 
 
+    }
+    
+    const handleGoogleLoginPopup = () => {
+      
+    // first do google login
+    googleLogin()
+    .then(res => {
+      console.log( res.user.email, res.user.displayName)
+    
+    const userInfo = {
+      email: res.user.email,
+      name: res.user.displayName
+    }
+    axiosPublic.post("/users",userInfo)
+    .then(response => {
+      console.log(response.data);
+    
+      //  if he is not in userDB it will insert and open profile update modal 
+      if(response.data.insertedId){
+      document.getElementById('my_modal_4').showModal()
+      }
+      else{
+          toast.success(`Welcome ${res.user.displayName}`)
+        navigate('/')
+      }
+    })
+    })
+    .catch(er => {
+      console.log(er)
+    })
+    }
+    
+    const handleGoogleLogin = (e) => {
+    // update user info in db 
+     e.preventDefault() ;
+     const form = e.target ;
+     const salary = form.salary.value ;
+     const designation = form.designation.value ;
+     const bankAcc = form.bankAcc.value ;
+    //  const employee = form.employee.value ;
+     console.log(salary, bankAcc, designation);
+    
+    const updatedInfo = {
+      salary, designation, bankAcc, image:user.photoURL
+    }
+    
+    axiosPublic.put(`/users/${user?.email}`, updatedInfo)
+    .then(res => {
+      console.log(res.data);
+      document.getElementById('my_modal_4').close() ;
+      form.reset() ;
+      navigate('/') ;
+      toast.success(`Welcome ${user?.displayName}`)
+    })
+    .catch(er => {
+      console.log(er);
+    })
     }
 
 
@@ -170,14 +230,69 @@ axiosPublic.post("/users", userInfo)
 
                     <div className="form-control mt-6">
                         <button className="btn bg-blue-500 text-white hover:text-black hover:bg-blue-500 duration-500 "><MdLogin className="text-2xl" />Register</button>
-                        <div className="divider">or</div>
-                        <button
-                            //   onClick={handleGoogleLogin}
-                            className="btn btn-outline duration-500"><FcGoogle className="text-2xl" />Login with Google</button>
+         
                     </div>
                     <p className="text-center">Already have an account? <Link to='/login' className="text-blue-500 font-bold underline hover:text-black duration-500">Login</Link></p>
                 </form>
+                <div className="divider">or</div>
+          <button 
+          onClick={handleGoogleLoginPopup} 
+          className="btn duration-500"><FcGoogle className="text-2xl" />Login with Google</button>
             </div>
+
+ {/* modal  */}
+<dialog id="my_modal_4" className="modal modal-bottom sm:modal-middle">
+  <div className="modal-box relative">
+    <button
+    //  onClick={handleClosePopup} 
+    className="absolute top-5 right-5 text-3xl text-red-500"><IoMdCloseCircle /></button>
+    <h3 className="font-bold text-2xl text-blue-600 text-center">Login With Google</h3>
+    <p className="py-4 text-gray-500 text-center">Please complete the form to proceed</p>
+    <div className="modal-action">
+      <form onSubmit={handleGoogleLogin} method="dialog" className="flex flex-col justify-center w-full gap-3">
+
+
+        {/* will update after getting marks  */}
+
+                        {/* <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Role</span>
+                            </label>
+                            <select required defaultValue='Employee' name="employee" className="select select-bordered w-full">
+                                <option value="Employee">Employee</option>
+                                <option value="HR">HR</option>
+                            </select>
+                        </div> */}
+
+      <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Designation</span>
+                            </label>
+                            <select required defaultValue='Sales Assistant' className="select select-bordered w-full " name="designation">
+                                <option value="Sales Assistant">Sales Assistant</option>
+                                <option value="Social Media executive">Social Media executive</option>
+                                <option value="Digital Marketer"> Digital Marketer</option>
+                                {/* <option value="HR (Human Resource)">HR </option> */}
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+      <div className="form-control">
+      <label className="label">
+            <span className="label-text">Bank Account No.</span>
+          </label>
+        <input required type="number" className="input input-bordered" name="bankAcc"  />
+        </div>
+      <div className="form-control">
+      <label className="label">
+            <span className="label-text">Salary</span>
+          </label>
+        <input required type="number" name="salary" className="input input-bordered"  />
+        </div>
+        <button className="btn">Continue</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
         </div>
     );
