@@ -39,6 +39,14 @@
     /* background-color: rgba(255, 255, 255, 0.595); */
   }
 
+  .table :where(thead, tfoot) {
+color: black !important ;
+  }
+
+  .table :where(thead tr, tbody tr:not(:last-child), tbody tr:first-child:last-child) {
+    border-bottom-color: rgb(214, 228, 255) !important ;
+  }
+
   /* #banner .hero-content {
     align-items: end;
     border: 1px solid red;

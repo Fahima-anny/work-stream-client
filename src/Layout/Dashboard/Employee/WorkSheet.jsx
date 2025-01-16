@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -24,8 +24,15 @@ const WorkSheet = () => {
     //     },
     //     enabled: !!user?.email
     // })
+    const [sort, setSort] = useState([]) ;
+    
+useEffect(() => {
+    const sorted = [...userWorkSheet].sort((a,b) =>  new Date(b.date) - new Date(a.date))
+    setSort(sorted) ;
+    refetch() ;
+}, [userWorkSheet, refetch])
 
-    console.log(userWorkSheet);
+    console.log(sort);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -50,10 +57,18 @@ const WorkSheet = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
+                  refetch() ;
             }
         })
         .catch(er => console.log(er))
 
+    }
+
+    const handleEditWork = (id) =>{
+        console.log(id);
+    }
+    const handleDeleteWork = (id) =>{
+console.log(id);
     }
 
     if(userWorkPending){
@@ -116,18 +131,23 @@ const WorkSheet = () => {
       </tr>
     </thead>
     <tbody>
-      {userWorkSheet.map((work, idx) =>    <tr key={work._id}>
+      {sort?.map((work, idx) =>    <tr key={work._id}>
         <th>{idx+1}</th>
         <td>{work.task}</td>
         <td>{work.hoursWorked} hr.</td>
-        <td>{work.date.toLocaleDateString("en-GB") // Convert to DD/MM/YYYY format
-      .split("/")
-      .join(".")}</td>
+        <td>{new Date(work.date) // Convert the string to a Date object
+      .toLocaleDateString("en-GB") // Format to DD/MM/YYYY
+      .split("/") // Split the date string by "/"
+      .join(".")} {/* Replace "/" with "." */}</td>
         <td>
-            <button><FaEdit className="text-xl text-blue-600 ml-3" /></button>
+            <button 
+            onClick={() => handleEditWork(work._id)}
+            ><FaEdit className="text-xl text-blue-600 ml-3" /></button>
         </td>
         <td>
-        <button><RiDeleteBin6Line className="text-xl text-red-600 ml-3" /></button>
+        <button
+        onClick={() => handleDeleteWork(work._id)}
+        ><RiDeleteBin6Line className="text-xl text-red-600 ml-3" /></button>
         </td>
       </tr>)}
    
