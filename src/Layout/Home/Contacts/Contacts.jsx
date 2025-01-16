@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import emailjs from '@emailjs/browser';
+import { Helmet } from "react-helmet-async";
 
 const Contacts = () => {
 
@@ -64,6 +65,10 @@ const Contacts = () => {
     return (
         <div className="">
            
+ <Helmet>
+                            <title>Work Stream | Contacts</title>
+                        </Helmet>
+
            <div
        data-aos="fade-right"
         className="hero md:h-[80vh]"

@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import useAxiosSecure from "./useAxiosSecure";
 
 
-const useAdmin = () => {
+const useRoleCheck = () => {
 
 const {user} = useAuth() ;
 
@@ -22,4 +22,4 @@ console.log(role);
     return [role, roleLoading] ;
 };
 
-export default useAdmin;
+export default useRoleCheck;

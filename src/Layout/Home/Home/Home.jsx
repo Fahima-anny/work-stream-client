@@ -7,6 +7,7 @@ import Services from "./Services";
 import Testimonials from "./Testimonials";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -20,6 +21,10 @@ const Home = () => {
 
     return (
         <div className="">
+
+ <Helmet>
+                            <title>Work Stream | Home</title>
+                        </Helmet>
 
           <div data-aos="fade-in" className="pb-20">
           <Banner></Banner>

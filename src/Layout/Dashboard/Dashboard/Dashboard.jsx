@@ -1,12 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
-import useAdmin from '../../../Hooks/useAdmin'
+import useRoleCheck from '../../../Hooks/useRoleCheck'
 import { MdOutlineMenu } from "react-icons/md";
+import { Helmet } from "react-helmet-async";
 
 // import useAuth from "../../../Hooks/useAuth";
 
 const Dashboard = () => {
 
-const [role , roleLoading] = useAdmin() ;
+const [role , roleLoading] = useRoleCheck() ;
 // const [isHR, isHRLoading] = useHR() ;
 // const {user} = useAuth() ;
 
@@ -26,6 +27,11 @@ if(roleLoading){
 
     return (
         <div>
+
+ <Helmet>
+                            <title>Work Stream | Dashboard</title>
+                        </Helmet>
+
        <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content ">

@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { toast } from "react-toastify";
 import { IoMdCloseCircle } from "react-icons/io";
+import { Helmet } from "react-helmet-async";
 
 const img_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
@@ -148,6 +149,10 @@ axiosPublic.post("/users", userInfo)
 
     return (
         <div className="max-w-screen-xl mx-auto pt-36 pb-20">
+
+ <Helmet>
+                            <title>Work Stream | Register</title>
+                        </Helmet>
 
             <div data-aos="fade-left" className="card py-5 bg-base-100 w-full max-w-3xl mx-auto shadow-xl shadow-base-300">
                 <a className=" text-center font-bold text-3xl font-serif">Work<span className="text-blue-500">Stream</span></a>

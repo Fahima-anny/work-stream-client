@@ -13,6 +13,9 @@ import EmployeeDetails from "../Layout/Dashboard/HR-Routes/EmployeeDetails";
 import Progress from '../Layout/Dashboard/HR-Routes/Progress'  
 import Payrol from "../Layout/Dashboard/Dashboard/AdminRoutes/Payrol";
 import AllEmployeeList from "../Layout/Dashboard/Dashboard/AdminRoutes/AllEmployeeList";
+import EmployeeRoute from "../Authentication/VerifiesRoutes/EmployeeRoute";
+import HrRoute from "../Authentication/VerifiesRoutes/HrRoute";
+import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
 
   const router = createBrowserRouter([
     {
@@ -46,36 +49,36 @@ import AllEmployeeList from "../Layout/Dashboard/Dashboard/AdminRoutes/AllEmploy
         // employee routes 
         {
           path:"work-sheet",
-          element: <WorkSheet></WorkSheet>,
-          
+          element: <EmployeeRoute><WorkSheet></WorkSheet></EmployeeRoute>,
+
         },
         {
           path:"payment-history",
-          element: <PaymentHistory></PaymentHistory>
+          element: <EmployeeRoute><PaymentHistory></PaymentHistory></EmployeeRoute>
         },
 
         // hr routes 
         {
           path:"employee-list",
-          element: <EmployeeList></EmployeeList>
+          element: <HrRoute><EmployeeList></EmployeeList></HrRoute>
         },
         {
           path:"details/:email",
-          element: <EmployeeDetails></EmployeeDetails>
+          element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>
         },
         {
           path:"progress",
-          element: <Progress></Progress>
+          element: <HrRoute><Progress></Progress></HrRoute>
         },
 
         // admin routes 
         {
           path:"all-employee-list",
-          element: <AllEmployeeList></AllEmployeeList>
+          element: <AdminRoute><AllEmployeeList></AllEmployeeList></AdminRoute>
         },
         {
           path:"payroll",
-          element: <Payrol></Payrol>
+          element: <AdminRoute><Payrol></Payrol></AdminRoute>
         },
       ]
     }

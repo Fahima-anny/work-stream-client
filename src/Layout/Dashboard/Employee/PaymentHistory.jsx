@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Helmet } from "react-helmet-async";
 
 
 const PaymentHistory = () => {
@@ -15,6 +16,11 @@ const PaymentHistory = () => {
 
     return (
         <div className="">
+
+ <Helmet>
+                            <title>Work Stream | Payment History</title>
+                        </Helmet>
+
               <h1 data-aos="fade-left" className="my-5 text-center text-2xl md:text-4xl font-bold font-serif"> payment History</h1>
            
 

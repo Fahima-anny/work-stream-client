@@ -9,6 +9,7 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 
@@ -114,7 +115,9 @@ axiosPublic.put(`/users/${user?.email}`, updatedInfo)
 
     return (
         <div className="max-w-screen-xl mx-auto pt-36 pb-20">
-            
+              <Helmet>
+                            <title>Work Stream | Login</title>
+                        </Helmet>
             
             <div data-aos="fade-left" className="card py-3 bg-base-100 w-full max-w-md mx-auto shadow-xl shadow-base-300">
         <a className=" text-center font-bold text-3xl font-serif">Work<span className="text-blue-500">Stream</span></a>
