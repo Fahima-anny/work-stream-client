@@ -8,7 +8,7 @@ import PrivateRoute from "../Authentication/VerifiesRoutes/PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard/Dashboard";
 import WorkSheet from "../Layout/Dashboard/Employee/WorkSheet";
 import PaymentHistory from "../Layout/Dashboard/Employee/PaymentHistory";
-import EmployeeList from "../Layout/Dashboard/HR-Routes/EmployeeList";
+// import EmployeeList from "../Layout/Dashboard/HR-Routes/EmployeeList";
 import EmployeeDetails from "../Layout/Dashboard/HR-Routes/EmployeeDetails";
 import Progress from '../Layout/Dashboard/HR-Routes/Progress'  
 import Payrol from "../Layout/Dashboard/Dashboard/AdminRoutes/Payrol";
@@ -16,6 +16,7 @@ import AllEmployeeList from "../Layout/Dashboard/Dashboard/AdminRoutes/AllEmploy
 import EmployeeRoute from "../Authentication/VerifiesRoutes/EmployeeRoute";
 import HrRoute from "../Authentication/VerifiesRoutes/HrRoute";
 import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
+import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
 
   const router = createBrowserRouter([
     {
@@ -60,11 +61,12 @@ import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
         // hr routes 
         {
           path:"employee-list",
-          element: <HrRoute><EmployeeList></EmployeeList></HrRoute>
+          element: <HrRoute><EmployeeListHR></EmployeeListHR></HrRoute>
         },
         {
-          path:"details/:email",
-          element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>
+          path:"details/:id",
+          element: <HrRoute><EmployeeDetails></EmployeeDetails></HrRoute>,
+           
         },
         {
           path:"progress",

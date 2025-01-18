@@ -75,7 +75,10 @@ if(roleLoading){
      <li><NavLink to="/dashboard/payment-history">Payment History</NavLink></li>
     </>}
 
+<div className="divider"></div>
 
+    <li><NavLink to="/">Home</NavLink></li>
+    <li><NavLink to="/contacts">Contacts</NavLink></li>
      
     </ul>
 
