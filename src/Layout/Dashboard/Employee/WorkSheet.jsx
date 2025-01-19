@@ -73,6 +73,8 @@ useEffect(() => {
                     timer: 1500
                   });
                   refetch() ;
+                  form.reset() ;
+                  setSelectedDate(new Date()); // Reset DatePicker to today's date
             }
         })
         .catch(er => console.log(er))
@@ -162,7 +164,7 @@ Swal.fire({
 
                 <h1 data-aos="fade-left" className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">Work Sheet</h1>
 
-          <div data-aos="fade-right"
+          <div 
           className="p-5 rounded-xl bg-base-200 mb-5">
                 <form onSubmit={handleSubmit} >
                     <label className="label">
@@ -198,9 +200,13 @@ Swal.fire({
                 </form>
             </div>
 
-<div data-aos="fade-left" className="p-5 rounded-xl bg-base-200 mb-5">
+<div 
+data-aos="fade-left" 
+className="p-5 rounded-xl bg-base-200 mb-5">
 <div className="overflow-x-auto">
-  <table data-aos="fade-left" className="table bg-white">
+  <table
+   data-aos="fade-left"
+    className="table bg-white -z-10">
     {/* head */}
     <thead>
       <tr>
@@ -281,7 +287,7 @@ Swal.fire({
                             <DatePicker
                                 selected={selectedDate}
                                 onChange={(date) => setSelectedDate(date)}
-                                className="input input-bordered w-full"
+                                className="input input-bordered w-full z-[100]"
                                 dateFormat="yyyy/MM/dd"
                                 required
                             />

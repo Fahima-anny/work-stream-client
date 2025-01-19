@@ -226,7 +226,7 @@ axiosSecure.post("/payroll", payrollData)
                   <label className="label">
                     <span className="label-text "> Year</span>
                   </label>
-            <input type="number" className="input input-bordered" name="year" placeholder="Year" id="" />
+            <input type="number" required className="input input-bordered" name="year" placeholder="Year" id="" />
                 </div>
           
                 <button  type="submit" className="btn bg-blue-100 text-blue-700 hover:bg-blue-200"><TiArrowForward className="text-2xl" />Pay </button>

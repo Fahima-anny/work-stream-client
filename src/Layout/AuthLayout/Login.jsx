@@ -10,6 +10,9 @@ import { useEffect } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Helmet } from "react-helmet-async";
+// import useCheckFired from "../../Hooks/useCheckFired";
+import Swal from "sweetalert2";
+// import { useQuery } from "@tanstack/react-query";
 
 const Login = () => {
 
@@ -26,27 +29,57 @@ const Login = () => {
 const navigate = useNavigate() ;
 const location = useLocation() ;
 const destination = location?.state || '/' ;
+// const [emailCheck, setEmailCheck] = useState(null) ;
 
+// const {data: isActiveData, isPending: activeDataLoading} = useQuery({
+//   queryKey: ['checkAccount'],
+//   queryFn: async () => {
+//    const res =await axiosPublic.get(`/users/fired?email=${emailCheck}`)
+//    console.log("bal",res.data.isActive);
+//    return res.data.isActive ;
+//   },
+//   enabled: !!emailCheck
+// })
 
-const handleLogin = e => {
+const handleLogin =async e => {
     e.preventDefault() ;
     const form = e.target ;
     const email = form.email.value ;
     const pass = form.pass.value ;
     console.log(email, pass);
+// setEmailCheck(email)
 
-        // login user 
-        loginUser(email, pass)
-        .then(res => {
-          // console.log(res.user);
-          toast.success(`Welcome ${res?.user?.displayName}`)
-          navigate(destination) ;
-        })
-        .catch(er => {
-          console.log(er);
-          toast.error(er.message.replace("Firebase:", "").trim())
-        })
+const res = await axiosPublic.get(`/users/fired?email=${email}`)
+const isActive = res.data.isActive ;
+
+
+if (isActive === false) {
+  Swal.fire({
+    icon: "error",
+    title: "You are fired",
+    text: "Your account has been disabled by the admin",
+    showConfirmButton: false,
+    timer: 2500,
+  });
+  form.reset() ;
+  return;
 }
+if(isActive === true){
+      // login user 
+      loginUser(email, pass)
+      .then(res => {
+        // console.log(res.user);
+        toast.success(`Welcome ${res?.user?.displayName}`)
+        navigate(destination) ;
+        form.reset() ;
+      })
+      .catch(er => {
+        console.log(er);
+        toast.error(er.message.replace("Firebase:", "").trim())
+      })
+    }
+}
+
 
 const handleGoogleLoginPopup = () => {
   
@@ -54,11 +87,6 @@ const handleGoogleLoginPopup = () => {
 googleLogin()
 .then(res => {
   console.log(res.user)
-  // console.log(res.user.photoURL)
-  // setUserPhoto(res?.user?.photoURL) ;
-  // toast.success(`Welcome ${res.user.displayName}`)
-  // navigate(destination) ;
-
 const userInfo = {
   email: res.user.email,
   name: res.user.displayName

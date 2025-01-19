@@ -2,16 +2,36 @@ import { NavLink, Outlet } from "react-router-dom";
 import useRoleCheck from '../../../Hooks/useRoleCheck'
 import { MdOutlineMenu } from "react-icons/md";
 import { Helmet } from "react-helmet-async";
+// import useAuth from "../../../Hooks/useAuth";
+// import { toast } from "react-toastify";
+import { FaHome } from "react-icons/fa";
+import { TiContacts } from "react-icons/ti";
+import { GiProgression } from "react-icons/gi";
+import { FaClipboardList, FaList } from "react-icons/fa6";
+import { LuBadgeDollarSign } from "react-icons/lu";
 
 // import useAuth from "../../../Hooks/useAuth";
 
 const Dashboard = () => {
 
+  // const {signOutUser} = useAuth()
+  // const navigate = useNavigate() ;
 const [role , roleLoading] = useRoleCheck() ;
+
 // const [isHR, isHRLoading] = useHR() ;
 // const {user} = useAuth() ;
 
 console.log(role);
+
+// const handleLogOout = () => {
+//       signOutUser()
+//         .then(() => {
+//           // console.log("user logged out");
+//           navigate("/login");
+//           toast("User Logged out")
+//         })
+//         .catch(Er => console.log(Er))
+// }
 
 if(roleLoading){
     return <div className="min-h-[80vh] flex justify-center items-center">
@@ -61,24 +81,25 @@ if(roleLoading){
 
    { role === "admin"  
     && <>
-    <li><NavLink to="/dashboard/all-employee-list">All Employee List</NavLink></li>
-    <li><NavLink to={`/dashboard/payroll`}>Payroll</NavLink></li>
+    <li><NavLink to="/dashboard/all-employee-list" className="flex gap-2 items-center"><FaList className="text-sm ml-1"/>All Employee List</NavLink></li>
+    <li><NavLink to={`/dashboard/payroll`} className="flex gap-2 items-center"><LuBadgeDollarSign className="text-xl"/>Payroll</NavLink></li>
    </>
    }
   {   role === "HR" 
     && <>
-    <li><NavLink to="/dashboard/employee-list">Employee List</NavLink></li>
-    <li><NavLink to={`/dashboard/progress`}>Progress</NavLink></li>
+    <li><NavLink to={`/dashboard/employee-list`} className="flex gap-2 items-center"><FaClipboardList className="text-xl"/>Employee List</NavLink></li>
+    <li><NavLink to={`/dashboard/progress`} className="flex gap-2 items-center"><GiProgression className="text-xl"/>Progress</NavLink></li>
    </>}
  {  role === "Employee"  && <>
-     <li><NavLink to="/dashboard/work-sheet">Work Sheet</NavLink></li>
-     <li><NavLink to="/dashboard/payment-history">Payment History</NavLink></li>
+  <li><NavLink to="/dashboard/work-sheet" className="flex gap-2 items-center"><FaList className="text-sm ml-1"/>Work Sheet</NavLink></li>
+  <li><NavLink to="/dashboard/payment-history" className="flex gap-2 items-center"><LuBadgeDollarSign className="text-xl"/>Payment History</NavLink></li>
     </>}
 
 <div className="divider"></div>
 
-    <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/contacts">Contacts</NavLink></li>
+    <li><NavLink to="/" className="flex gap-2 items-center"><FaHome className="text-2xl ml-1"/>Home</NavLink></li>
+    <li><NavLink to="/contacts" className="flex gap-2 items-center"><TiContacts className="text-2xl"/>Contacts</NavLink></li>
+    {/* <li><button onClick={handleLogOout} className="flex gap-2 items-center"><FaSignOutAlt className="text-xl ml-1"/>Logout </button></li> */}
      
     </ul>
 

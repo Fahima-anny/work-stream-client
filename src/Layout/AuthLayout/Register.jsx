@@ -241,7 +241,7 @@ axiosPublic.post("/users", userInfo)
                 <div className="divider">or</div>
           <button 
           onClick={handleGoogleLoginPopup} 
-          className="btn duration-500"><FcGoogle className="text-2xl" />Login with Google</button>
+          className="btn duration-500 mx-8"><FcGoogle className="text-2xl" />Login with Google</button>
             </div>
 
  {/* modal  */}

@@ -17,6 +17,7 @@ import EmployeeRoute from "../Authentication/VerifiesRoutes/EmployeeRoute";
 import HrRoute from "../Authentication/VerifiesRoutes/HrRoute";
 import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
 import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
+import DashboardWelcome from "../Layout/Dashboard/DashboardWelcome";
 
   const router = createBrowserRouter([
     {
@@ -46,6 +47,12 @@ import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
       path: 'dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+
+        // common welcome route 
+        {
+          path:"/dashboard",
+          element: <DashboardWelcome></DashboardWelcome>
+        },
 
         // employee routes 
         {
