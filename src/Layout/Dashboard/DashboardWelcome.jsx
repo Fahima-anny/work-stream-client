@@ -45,7 +45,7 @@ src={user.photoURL} alt="" />
 
            <h1 className="text-xl  text-gray-500 text-center max-w-4xl mx-auto">Welcome to the dashboard! This is your central hub for managing tasks, accessing essential tools, and staying updated. Whether you're overseeing operations, handling HR, or focusing on your responsibilities, everything you need is right here. Let's achieve great things together!
            </h1>
-           <span className="italic text-black font-semibold"> --Welcome-- </span>  
+           <span className="italic text-black font-semibold pb-5"> --Welcome-- </span>  
 
 
 

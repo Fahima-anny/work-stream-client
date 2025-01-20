@@ -33,11 +33,11 @@ console.log(role);
 //         .catch(Er => console.log(Er))
 // }
 
-if(roleLoading){
-    return <div className="min-h-[80vh] flex justify-center items-center">
-    <span className="loading loading-dots loading-lg"></span>
-   </div>
-}
+// if(roleLoading){
+//     return <div className="min-h-[80vh] flex justify-center items-center">
+//     <span className="loading loading-dots loading-lg"></span>
+//    </div>
+// }
 
 // if(isHRLoading){
 //     return <div className="min-h-[80vh] flex justify-center items-center">
@@ -60,7 +60,7 @@ if(roleLoading){
     <MdOutlineMenu className="text-3xl m-3"/>
     </label>
 
-<div className="max-w-5xl mx-auto px-3 xl:px-0 py-0 lg:py-10 min-h-screen">
+<div className="max-w-5xl mx-auto px-3 xl:px-0 pt-0 lg:py-10 min-h-screen mb-10">
 <Outlet></Outlet>
 </div>
 

@@ -17,7 +17,7 @@ const AboutUs = () => {
 <div className="flex flex-col md:flex-row gap-10 pt-10 items-center">
 
 {/* card 1 */}
-<div className="card md:w-1/3 shadow-lg px-3 py-5 shadow-gray-400 md:h-[300px]">
+<div className="card md:w-1/3 shadow-lg px-3 py-5 shadow-gray-400 lg:h-[300px]">
   <figure className="bg-yellow-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <GiStairsGoal className="text-5xl" />
   </figure>
@@ -31,7 +31,7 @@ const AboutUs = () => {
 </div>
 
 {/* card 2 */}
-<div className="card md:w-1/3 shadow-lg px-3 py-7 shadow-gray-400 md:h-[370px]">
+<div className="card md:w-1/3 shadow-lg px-3 py-7 shadow-gray-400 lg:h-[370px]">
   <figure className="bg-indigo-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <FaLandmarkFlag className="text-5xl" />
   </figure>
@@ -45,7 +45,7 @@ const AboutUs = () => {
 </div>
 
 {/* card 3 */}
-<div className="card md:w-1/3 shadow-lg px-3 py-5 shadow-gray-400 md:h-[300px]">
+<div className="card md:w-1/3 shadow-lg px-3 py-5 shadow-gray-400 lg:h-[300px]">
   <figure className="bg-lime-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <GoGoal className="text-5xl" />
   </figure>

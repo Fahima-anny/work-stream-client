@@ -51,7 +51,7 @@ import DashboardWelcome from "../Layout/Dashboard/DashboardWelcome";
         // common welcome route 
         {
           path:"/dashboard",
-          element: <DashboardWelcome></DashboardWelcome>
+          element:<PrivateRoute> <DashboardWelcome></DashboardWelcome></PrivateRoute>
         },
 
         // employee routes 
