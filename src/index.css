@@ -43,11 +43,6 @@
 color: black !important ;
   }
 
-
-  .react-datepicker__month-container {
-    z-index: 1050 !important;
-  }
-
   
 
   .table :where(thead tr, tbody tr:not(:last-child), tbody tr:first-child:last-child) {

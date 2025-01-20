@@ -14,6 +14,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const axiosPublic = useAxiosPublic() ;
+    const [userRole, setUserRole] = useState(null) ;
 const auth = getAuth(app)
 
     // create user 
@@ -50,12 +51,15 @@ const {data: userData} = useQuery({
     queryKey: ['userData', user?.email],
 queryFn: async () => {
 const data = await axiosPublic.get(`/users/${user?.email}`) 
+if(data){
+    setUserRole(data.data)
+}
 return data ;
 },
 enabled: !!user?.email,
 })
-console.log(userData?.data);
 
+console.log("role:", userRole);
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -91,7 +95,7 @@ console.log(userData?.data);
         loginUser,
         signUp,
         googleLogin,
-
+        userRole
     }
 
     return (

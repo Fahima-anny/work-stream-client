@@ -24,6 +24,7 @@ const Login = () => {
     });
   }, []);
 
+  const {signOutUser} = useAuth() ;
     const {loginUser, googleLogin, user} = useAuth() ;
     const axiosPublic = useAxiosPublic() ;
 const navigate = useNavigate() ;
@@ -81,29 +82,50 @@ if(isActive === true){
 }
 
 
-const handleGoogleLoginPopup = () => {
+const handleGoogleLoginPopup = async () => {
   
 // first do google login
 googleLogin()
-.then(res => {
+.then(async res => {
   console.log(res.user)
 const userInfo = {
   email: res.user.email,
   name: res.user.displayName
 }
-axiosPublic.post("/users",userInfo)
-.then(response => {
-  console.log(response.data);
 
-  //  if he is not in userDB it will insert and open profile update modal 
-  if(response.data.insertedId){
-  document.getElementById('my_modal_5').showModal()
-  }
-  else{
-      toast.success(`Welcome ${res.user.displayName}`)
-    navigate(destination)
-  }
-})
+const response = await axiosPublic.get(`/users/fired?email=${res.user.email}`)
+const isActive = response.data.isActive ;
+
+
+if (isActive === false) {
+  signOutUser()
+  .then(() => {
+    Swal.fire({
+      icon: "error",
+      title: "You are fired",
+      text: "Your account has been disabled by the admin",
+      showConfirmButton: false,
+      timer: 2500,
+    });
+  })
+  return;
+}
+if(isActive === true){
+      // login user 
+      axiosPublic.post("/users",userInfo)
+      .then(response => {
+        console.log(response.data);
+        //  if he is not in userDB it will insert and open profile update modal 
+        if(response.data.insertedId){
+        document.getElementById('my_modal_5').showModal()
+        }
+        else{
+            toast.success(`Welcome ${res.user.displayName}`)
+          navigate(destination)
+        }
+      })
+    }
+
 })
 .catch(er => {
   console.log(er)

@@ -206,7 +206,7 @@ className="p-5 rounded-xl bg-base-200 mb-5">
 <div className="overflow-x-auto">
   <table
    data-aos="fade-left"
-    className="table bg-white -z-10">
+    className="table bg-white">
     {/* head */}
     <thead>
       <tr>

@@ -15,13 +15,13 @@ const EmployeeDetails = () => {
 
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
-  // console.log(id);
+  console.log(id);
 
-  const { data: employeeData, isLoading: employeeDataLoading } = useQuery({
+  const { data: employeeData, isPending: employeeDataLoading } = useQuery({
     queryKey: ["singleEmployeeData"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/id/${id}`);
-      // console.log(res.data);
+      console.log(res.data);
       return res.data;
     }
   })
@@ -52,7 +52,7 @@ const EmployeeDetails = () => {
 
 
   console.log(employeeData);
-  const { name, email, salary, bankAcc, isVerified, image, designation, role } = employeeData;
+  const { name, email, salary, bankAcc, isVerified, image, designation, role } = employeeData  || {} ;
 
   const colors = ["#FFD700", "#8884d8", "#82ca9d", "#FF6347", "#40E0D0", "#FF69B4", "#FF4500"];
 

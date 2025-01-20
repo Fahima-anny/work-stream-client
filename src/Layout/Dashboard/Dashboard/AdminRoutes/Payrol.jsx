@@ -82,7 +82,7 @@ setModalData(request) ;
                                 paymentRequests?.map((request, idx) => <tr key={request._id}>
                                     <th>{idx + 1}</th>
                                     <td>{request?.name}</td>
-                                    <td>{request?.salary} hr.</td>
+                                    <td>{request?.salary}</td>
                                     <td>{request?.month}-{request.year}</td>
                                     <td>
                                         {request?.paymentDate 

@@ -17,7 +17,7 @@ const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
 const Register = () => {
 
-    const { signUp , updateUserInfo, user, googleLogin} = useAuth();
+    const { signUp , updateUserInfo, user, googleLogin, signOutUser} = useAuth();
     const navigate = useNavigate() ;
 const axiosPublic = useAxiosPublic() ;
 
@@ -89,35 +89,55 @@ axiosPublic.post("/users", userInfo)
 
     }
     
-    const handleGoogleLoginPopup = () => {
-      
-    // first do google login
-    googleLogin()
-    .then(res => {
-      console.log( res.user.email, res.user.displayName)
-    
-    const userInfo = {
-      email: res.user.email,
-      name: res.user.displayName
-    }
-    axiosPublic.post("/users",userInfo)
-    .then(response => {
-      console.log(response.data);
-    
-      //  if he is not in userDB it will insert and open profile update modal 
-      if(response.data.insertedId){
-      document.getElementById('my_modal_4').showModal()
-      }
-      else{
-          toast.success(`Welcome ${res.user.displayName}`)
-        navigate('/')
-      }
-    })
-    })
-    .catch(er => {
-      console.log(er)
-    })
-    }
+   const handleGoogleLoginPopup = async () => {
+     
+   // first do google login
+   googleLogin()
+   .then(async res => {
+     console.log(res.user)
+   const userInfo = {
+     email: res.user.email,
+     name: res.user.displayName
+   }
+   
+   const response = await axiosPublic.get(`/users/fired?email=${res.user.email}`)
+   const isActive = response.data.isActive ;
+   
+   
+   if (isActive === false) {
+     signOutUser()
+     .then(() => {
+       Swal.fire({
+         icon: "error",
+         title: "You are fired",
+         text: "Your account has been disabled by the admin",
+         showConfirmButton: false,
+         timer: 2500,
+       });
+     })
+     return;
+   }
+   if(isActive === true){
+         // login user 
+         axiosPublic.post("/users",userInfo)
+         .then(response => {
+           console.log(response.data);
+           //  if he is not in userDB it will insert and open profile update modal 
+           if(response.data.insertedId){
+           document.getElementById('my_modal_5').showModal()
+           }
+           else{
+               toast.success(`Welcome ${res.user.displayName}`)
+             navigate('/')
+           }
+         })
+       }
+   
+   })
+   .catch(er => {
+     console.log(er)
+   })
+   }
     
     const handleGoogleLogin = (e) => {
     // update user info in db 
