@@ -24,6 +24,8 @@ const Contacts = () => {
       console.log("messages",res.data);
       return res.data
     }
+    ,
+    enabled: userRole === "admin"
       })
 
 

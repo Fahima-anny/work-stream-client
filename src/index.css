@@ -43,7 +43,18 @@
 color: black !important ;
   }
 
-  
+  /* .drawer-side  {
+    width: 80%;
+} */
+
+/* .drawer-open > .drawer-toggle ~ .drawer-side{
+  width: 80%;
+} */
+
+.w-80 {
+  width: 18rem;
+}
+
 
   .table :where(thead tr, tbody tr:not(:last-child), tbody tr:first-child:last-child) {
     border-bottom-color: rgb(222, 222, 222) !important ;
@@ -54,4 +65,9 @@ color: black !important ;
     border: 1px solid red;
     padding-top: 100px;
   } */
+
+
+
+
+
   
