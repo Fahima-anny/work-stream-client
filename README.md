@@ -4,6 +4,21 @@
 
 ---
 
+## **Live Site**
+
+🔗 [Live Demo](https://workstream-12.web.app/)
+
+---
+
+## **Admin Credentials**
+
+- **Email**: `fahima.info03@gmail.com`  
+- **Password**: `123456Aa!`
+
+Use these credentials to explore the admin functionalities.
+
+---
+
 ## **Features**
 
 - **Role-Based Functionality**:
