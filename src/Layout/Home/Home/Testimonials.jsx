@@ -23,7 +23,7 @@ const Testimonials = () => {
     }, [])
 
     return (
-        <div className=" py-20">
+        <div className=" pb-20">
             <div className=" mx-auto max-w-screen-xl px-3 xl:px-0 ">
 
             <div className="text-center mx-auto max-w-4xl">
@@ -50,7 +50,7 @@ const Testimonials = () => {
                   {
                     testimonial.map(test =>
                       <SwiperSlide key={test.id} className="rounded-3xl border
-                       border-gray-300 py-10 my-10 ">  
+                       border-gray-300 bg-gray-100 py-10 my-10 ">  
                        <div className=" flex justify-center items-center">
 <img src={test.img}
 className="w-40 h-40 rounded-full "

@@ -4,13 +4,13 @@ import { IoBarChartSharp } from "react-icons/io5";
 import { TiArrowForward } from "react-icons/ti";
 
 
-const Services = () => {
+const Features = () => {
     return (
         <div>
            <div className="text-center mx-auto max-w-4xl">
            <h3 className="w-fit mx-auto bg-blue-100 border border-blue-700 rounded-lg py-1 px-2 text-blue-600 font-semibold flex items-center"><TiArrowForward className="text-2xl"/> Smart Solutions </h3>
-            <h1 className="my-5 text-2xl md:text-4xl font-bold font-serif">Our Services</h1>
-            <p className="text-gray-600">Our services ensure seamless employee management with advanced tools, improving productivity, simplifying workflows, and fostering a collaborative work environment.</p>
+            <h1 className="my-5 text-2xl md:text-4xl font-bold font-serif">Our Features</h1>
+            <p className="text-gray-600">Our features ensure seamless employee management with advanced tools, improving productivity, simplifying workflows, and fostering a collaborative work environment.</p>
            </div>
 
 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 pt-10">
@@ -77,4 +77,4 @@ const Services = () => {
     );
 };
 
-export default Services;
+export default Features;

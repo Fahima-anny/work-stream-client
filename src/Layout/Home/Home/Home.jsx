@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import AboutUs from "./AboutUs";
 import Banner from "./Banner";
 import FAQ from "./FAQ";
-import Services from "./Services";
 import Testimonials from "./Testimonials";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Helmet } from "react-helmet-async";
+import Features from "./Features";
 
 const Home = () => {
 
@@ -35,7 +35,7 @@ const Home = () => {
           </div>
 
           <div data-aos="fade-left" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
-          <Services></Services>
+          <Features></Features>
           </div>
 
 <div data-aos="fade-right">

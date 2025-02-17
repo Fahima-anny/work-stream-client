@@ -22,12 +22,12 @@ const Navbar = () => {
 
   const links = <>
     <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="dashboard">Dashboard</NavLink></li>
+ {user ?    <li><NavLink to="dashboard">Dashboard</NavLink></li> : ""}
     <li><NavLink to="/contacts">Contacts</NavLink></li>
   </>
 
   return (
-    <div className="fixed z-50 backdrop-blur-sm bg-black/30 w-full">
+    <div className="fixed z-50 backdrop-blur-sm bg-black/60 w-full">
       <div className="navbar mx-auto max-w-screen-xl text-white py-3">
         <div className="navbar-start">
           <div className="dropdown">
@@ -57,7 +57,7 @@ const Navbar = () => {
           <a className="md:text-2xl rounded-tl-xl rounded-br-xl py-1 px-1 md:px-3 border-l-4 border-l-white border-b-4 border-b-white  font-serif bg-black"><span className="font-semibold">Work</span><span className="text-blue-600 font-black">Stream</span></a>
         </div>
         <div className="navbar-center navMenu hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 text-lg">
             {links}
           </ul>
         </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
                   user && <div className="dropdown dropdown-hover dropdown-bottom dropdown-end ">
                     <img
                       tabIndex={0} role="button"
-                      className="m-1 w-12 h-12 object-cover object-center rounded-full"
+                      className="m-1 w-12 h-12 object-cover object-center rounded-full bg-white"
                       src={user?.photoURL} alt="" />
                   <div
                   className="dropdown-content menu bg-base-100 rounded-box z-[1]  px-3 py-5 space-y-3 shadow min-w-[220px]"
