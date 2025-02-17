@@ -22,7 +22,7 @@ const AboutUs = () => {
   <GiStairsGoal className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title  font-bold text-blue-500 text-2xl">Our Vision    </h2>
+    <h2 className="card-title font-bold text-blue-500 text-2xl">Our Vision    </h2>
     <p className="text-gray-600">Our vision is to create a seamless employee management platform, empowering businesses to thrive through innovation, efficiency, and collaboration.</p>
     <div className="card-actions">
    <button></button>

@@ -2,7 +2,7 @@ const Banner = () => {
     return (
       <div id="banner" className="banner-rounded">
         <div
-          className="hero min-h-[110vh] bg-cover bg-center"
+          className="hero min-h-[90vh] bg-cover bg-center"
           style={{
             backgroundImage: "url(https://i.ibb.co.com/k5yyZvv/pexels-fauxels-3183127.jpg)",
           }}
