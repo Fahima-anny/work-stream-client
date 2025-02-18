@@ -9,15 +9,22 @@ export default {
   },
   daisyui: {
     themes: [
-        "light",
-        "night"
-      // {
-      //   sunset: {
-      //     // eslint-disable-next-line no-undef
-      //     ...require("daisyui/src/theming/themes")["sunset"],
-      //     "base-content": "white",
-      // },
-      // }
+        // "light",
+        // "night"
+      {
+        night: {
+          // eslint-disable-next-line no-undef
+          ...require("daisyui/src/theming/themes")["night"],
+          "accent": "#002370",
+        }
+      },
+      {
+        light: {
+          // eslint-disable-next-line no-undef
+          ...require("daisyui/src/theming/themes")["light"],
+          "accent": "#DBEAFE",
+      }
+      }
   ],
   },
   plugins: [
