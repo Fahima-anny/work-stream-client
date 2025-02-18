@@ -14,7 +14,7 @@
     left: 0;
     width: 100vw;
     height: 100px; /* Adjust the height for the depth of the curve */
-    background: white; /* Match the background color of the next section */
+    background: var(--bg-base-100); /* Match the background color of the next section */
     /* clip-path: path(
       "M0 0C200 100 500 120 800 120C1300 70 1600 50 1600 0L1440 320L0 320Z"
     ); */

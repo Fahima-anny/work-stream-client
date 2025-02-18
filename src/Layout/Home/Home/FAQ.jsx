@@ -26,7 +26,7 @@ const FAQ = () => {
           <img
             src="https://us.123rf.com/450wm/vectorup/vectorup2205/vectorup220500088/185622325-frequently-asked-questions-faq-label-isolated-on-white-background-vector-illustration.jpg?ver=6"
             alt="FAQ Illustration"
-            className="shadow-xl shadow-gray-300 rounded-2xl w-full md:h-[50vh] object-cover object-center"
+            className="shadow-md shadow-gray-500 rounded-2xl w-full md:h-[50vh] object-cover object-center"
           />
         </div>
 

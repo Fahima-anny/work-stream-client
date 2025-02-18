@@ -17,11 +17,11 @@ const Features = () => {
 
 {/* card 1 */}
 <div className="card shadow-md shadow-gray-500 px-3 py-7 ">
-  <figure className="bg-green-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
+  <figure className="bg-blue-700 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <IoBarChartSharp className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-500">HR Analytics & Reporting</h2>
+    <h2 className="card-title font-bold text-blue-700">HR Analytics & Reporting</h2>
     <p className="text-gray-500">We Provide detailed reports and insights on key HR metrics like performance, turnover rates, and workforce trends.</p>
     <div className="card-actions">
    <button></button>
@@ -31,11 +31,11 @@ const Features = () => {
 
 {/* card 2 */}
 <div className="card shadow-md shadow-gray-500 px-3 py-7 ">
-  <figure className="bg-red-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
+  <figure className="bg-blue-700 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <FaSackDollar className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-500">Payroll Management</h2>
+    <h2 className="card-title font-bold text-blue-700">Payroll Management</h2>
     <p className="text-gray-500">Automate salary calculations, tax deductions, and payroll processing to ensure timely payments and compliance.</p>
     <div className="card-actions">
    <button></button>
@@ -45,11 +45,11 @@ const Features = () => {
 
 {/* card 3 */}
 <div className="card shadow-md shadow-gray-500 px-3 py-7 ">
-  <figure className="bg-blue-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
+  <figure className="bg-blue-700 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <FaCalendarDays className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-500">Attendance & Time Tracking</h2>
+    <h2 className="card-title font-bold text-blue-700">Attendance & Time Tracking</h2>
     <p className="text-gray-500">Track employee attendance, work hours, and overtime to improve workforce productivity and reduce errors.</p>
     <div className="card-actions">
    <button></button>
@@ -59,11 +59,11 @@ const Features = () => {
 
 {/* card 4 */}
 <div className="card shadow-md shadow-gray-500 px-3 py-7">
-  <figure className="bg-pink-400 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
+  <figure className="bg-blue-700 w-20 h-20 text-white rounded-full p-3 mx-auto mb-4">
   <GoLaw className="text-5xl" />
   </figure>
   <div className="card-body p-0 items-center text-center">
-    <h2 className="card-title font-bold text-blue-500">Compliance & Legal Support</h2>
+    <h2 className="card-title font-bold text-blue-700">Compliance & Legal Support</h2>
     <p className="text-gray-500">Ensure all employee management practices comply with labor laws and regulations, with document storage and audit trails.</p>
     <div className="card-actions">
    <button></button>

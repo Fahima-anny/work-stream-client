@@ -1,8 +1,8 @@
 const Banner = () => {
     return (
-      <div id="banner" className="banner-rounded">
+      <div id="banner" className="banner-rounded bg-base-100">
         <div
-          className="hero min-h-[97vh] bg-cover bg-center"
+          className="hero min-h-[97vh] bg-cover bg-center "
           style={{
             backgroundImage: "url(https://i.ibb.co.com/k5yyZvv/pexels-fauxels-3183127.jpg)",
           }}

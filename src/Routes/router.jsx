@@ -20,6 +20,8 @@ import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
 import DashboardWelcome from "../Layout/Dashboard/DashboardWelcome";
 import Blogs from "../Layout/Home/Blogs/Blogs";
 import Services from "../Layout/Home/Services/Services";
+import AboutUs from "../Layout/Home/Home/AboutUs";
+import About from "../Layout/Home/About/About";
 
   const router = createBrowserRouter([
     {
@@ -40,8 +42,8 @@ import Services from "../Layout/Home/Services/Services";
             element: <Blogs></Blogs>
         },
         {
-            path:'/services',
-            element: <Services></Services>
+            path:'/about',
+            element: <About></About>
         },
         {
             path:'/login',
