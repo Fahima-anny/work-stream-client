@@ -79,7 +79,7 @@ const Contacts = () => {
       </Helmet>
 
       <div
-        data-aos="fade-right"
+        data-aos="fade-in"
         className="hero md:h-[80vh]"
         style={{
           backgroundImage: "url(https://i.ibb.co.com/dpCJcTC/pexels-olly-789822.jpg)",
@@ -129,11 +129,11 @@ const Contacts = () => {
             // rest of user 
             : <div className="flex flex-col lg:flex-row py-16">
               {/* Contact Details Section */}
-              <div className="bg-white py-6 lg:w-1/3 w-full mb-6 lg:mb-0">
+              <div className="bg-base-100 py-6 lg:w-1/3 w-full mb-6 lg:mb-0">
                 <h2 className="text-xl font-bold mb-4 text-blue-600">Contact Info</h2>
                 <div className="space-y-6">
                   {/* Address */}
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-4 border border-gray-500 p-3 rounded-xl md:mr-8 mt-5">
                     <span className="text-blue-500 text-2xl">📍</span>
                     <div>
                       <h4 className="font-semibold">Address</h4>
@@ -142,7 +142,7 @@ const Contacts = () => {
                     </div>
                   </div>
                   {/* Phone */}
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-4 border border-gray-500 p-3 rounded-xl md:mr-8 mt-5">
                     <span className="text-blue-500 text-2xl">📞</span>
                     <div>
                       <h4 className="font-semibold">Phone</h4>
@@ -151,7 +151,7 @@ const Contacts = () => {
                     </div>
                   </div>
                   {/* Email */}
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-4 border border-gray-500 p-3 rounded-xl md:mr-8 mt-5">
                     <span className="text-blue-500 text-2xl">✉️</span>
                     <div>
                       <h4 className="font-semibold">Email</h4>
@@ -163,7 +163,7 @@ const Contacts = () => {
               </div>
 
               {/* Message Form Section */}
-              <div className="bg-white py-6 lg:w-2/3 w-full">
+              <div className="py-6 lg:w-2/3 w-full">
                 <h2 className="text-xl font-bold mb-4 text-blue-600">Send us a message</h2>
                 <p className="text-gray-500 mb-6">
                   If you have any work from me or any types of queries related to my tutorial, you can send me a message from here.

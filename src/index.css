@@ -7,6 +7,10 @@
     overflow: hidden;
   }
   
+  .aboutHero{
+    background-position: top;
+  }
+
   .banner-rounded::after {
     content: "";
     position: absolute;

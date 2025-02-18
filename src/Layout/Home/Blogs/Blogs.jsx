@@ -20,8 +20,8 @@ const Blogs = () => {
                   </Helmet>
 
                   <div
-        data-aos="fade-right"
-        className="hero md:h-[90vh] object-top"
+        data-aos="fade-in"
+        className="hero md:h-[80vh] object-top"
         style={{
           backgroundImage: "url(https://i.ibb.co.com/QvvwpdD7/business-colleagues-smiling-looking-each-other.jpg)",
         }}>
