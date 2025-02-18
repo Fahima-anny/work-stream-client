@@ -50,6 +50,10 @@
 color: black !important ;
   }
 
+  .justify{
+    text-align: justify;
+  }
+
   /* .drawer-side  {
     width: 80%;
 } */

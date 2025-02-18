@@ -3,7 +3,16 @@
 const Footer = () => {
     return (
         <div data-aos="fade-right" className="bg-base-200">
-            <footer className="footer mx-auto max-w-screen-xl text-base-content px-10 md:px-3 xl:px-0 py-10">
+            <footer className="footer justify-between mx-auto max-w-screen-xl text-base-content px-10 md:px-3 xl:px-0 py-10">
+            <div className="md:flex flex-col justify-end">
+    <div className="pb-3">
+    <a className="md:text-2xl rounded-tl-xl rounded-br-xl py-1 px-1 md:px-3 border-l-4 border-l-blue-600 border-b-4 border-b-blue-600  font-serif bg-black"><span className="font-semibold text-white">Work</span><span className="text-blue-600 font-black">Stream</span></a>
+    </div>
+    <h3 className="font-bold">Employee Management System</h3>
+<p className=" text-gray-500 max-w-lg">We are committed to transforming employee management with innovative solutions, enhancing productivity, fostering collaboration, and driving workplace success.</p>
+
+ </div>
+
   <nav>
     <h6 className="footer-title text-blue-600 opacity-100">Services</h6>
     <a className="link link-hover">Branding</a>
@@ -24,23 +33,6 @@ const Footer = () => {
     <a className="link link-hover">Privacy policy</a>
     <a className="link link-hover">Cookie policy</a>
   </nav>
- <div className="w-full md:flex justify-end">
- <form className="">
-    <h6 className="footer-title text-blue-600 opacity-100">Newsletter</h6>
-    <fieldset className="form-control w-80">
-      <label className="label">
-        <span className="label-text text-gray-500">Enter your email address</span>
-      </label>
-      <div className="join">
-        <input
-          type="text"
-          placeholder="username@site.com"
-          className="input input-bordered join-item w-1/2 md:w-auto" />
-        <button className="hover:bg-[#000f38] duration-300 py-1 px-2 text-white bg-black join-item">Subscribe</button>
-      </div>
-    </fieldset>
-  </form>
- </div>
 </footer>
 <footer className="footer footer-center bg-base-200 text-black p-4 border-t-2 border-t-gray-300">
   <aside>
