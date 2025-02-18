@@ -15,7 +15,7 @@ const Home = () => {
 
   useEffect(() => {
     AOS.init({
-      duration: 2500,
+      duration: 2000,
       once: true,
       offset: 100,
     });
@@ -32,20 +32,20 @@ const Home = () => {
           <Banner></Banner>
           </div>
 
-          <div data-aos="fade-left" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
+          <div data-aos="fade-in" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
           <Features></Features>
           </div>
 
-          <div data-aos="fade-left" className="pb-20 ">
+          <div data-aos="fade-in" className="pb-20 ">
           <EmployeeExperience></EmployeeExperience>
           </div>
 
-          <div  data-aos="fade-right" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
+          <div  data-aos="fade-in" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
           <AboutUs></AboutUs>
           </div>
 
 
-<div data-aos="fade-right">
+<div data-aos="fade-in">
           <Testimonials></Testimonials>
 </div>
 
@@ -53,7 +53,7 @@ const Home = () => {
   <BlogSection></BlogSection>
 </div>
 
-           <div data-aos="fade-left" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
+           <div data-aos="fade-in" className="pb-20 mx-auto max-w-screen-xl px-3 xl:px-0">
           <FAQ></FAQ>
           </div>
 

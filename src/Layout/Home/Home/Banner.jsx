@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Banner = () => {
     return (
       <div id="banner" className="banner-rounded bg-base-100">
@@ -14,7 +16,7 @@ const Banner = () => {
               <p className="mb-5 para">
               Optimize your workforce operations effortlessly, enhance productivity, and create a smarter, more efficient workplace with streamlined employee management solutions.
               </p>
-              <button className="px-4 hover:bg-[#000f38] duration-300 py-1 bg-black border-2 border-blue-700 rounded-badge ">Get Started</button>
+              <Link to="/dashboard" className="px-4 hover:bg-[#000f38] duration-300 py-1 bg-black border-2 border-blue-700 rounded-badge ">Get Started</Link>
             </div>
           </div>
         </div>
