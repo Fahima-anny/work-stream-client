@@ -23,11 +23,12 @@ const AllEmployeeList = () => {
             offset: 100,
         });
     }, []);
+    const [sortOrder, setSortOrder] = useState("")
 
     const { data: allVerifiedEmployee, isLoading: allVerifiedEmployeeLoading, refetch } = useQuery({
-        queryKey: ["allVerifiedEmployee"],
+        queryKey: ["allVerifiedEmployee", sortOrder],
         queryFn: async () => {
-            const res = await axiosSecure.get("/users/verified")
+            const res = await axiosSecure.get(`/users/verified?sortOrder=${sortOrder}`)
             console.log(res.data);
             return res.data;
         }
@@ -110,7 +111,6 @@ const AllEmployeeList = () => {
                 })
             return
         }
-
         else {
             Swal.fire({
                 title: "Promotion",
@@ -120,23 +120,38 @@ const AllEmployeeList = () => {
         }
     }
 
+      const handleSort = (event) => {
+        const sortOrder = event.target.value;
+        console.log(sortOrder); 
+        if (sortOrder === 'desc') {
+            setSortOrder("desc") ; 
+        } else if (sortOrder === 'asc') {
+            setSortOrder("asc") ;
+        }
+      };
+
     if (allVerifiedEmployeeLoading) {
         return <div className="min-h-[80vh] flex justify-center items-center">
             <span className="loading loading-dots loading-lg"></span>
         </div>
     }
 
-
     return (
         <div>
-
             <Helmet>
                 <title>Work Stream | All Employee</title>
             </Helmet>
 
-
-            <h1 data-aos="fade-right" className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">All Employee List</h1>
-
+            <div className="grid grid-cols-1 items-center md:grid-cols-2 justify-center md:justify-between">
+            <h1 data-aos="fade-right" className="my-5 text-2xl md:text-4xl font-bold font-serif">All Employee List</h1>
+ <div className="flex justify-end">
+ <select onChange={handleSort} className="select select-bordered max-w-xs">
+  <option disabled selected>Sort by Date</option>
+  <option value="desc">Descending Order</option>
+  <option value="asc">Ascending Order</option>
+</select>
+ </div>
+     </div>
             {
                 isTableView
                     ? <div data-aos="fade-left" className="p-5 rounded-xl bg-base-200 mb-5">

@@ -21,11 +21,12 @@ const PaymentHistory = () => {
   const { user } = useAuth();
   const rowPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1) ;
+  const [sortOrder, setSortOrder] = useState("desc") ;
 
   const { data, isPending: paymentHistoryLoading } = useQuery({
-    queryKey: ['paymentHistory', currentPage, rowPerPage],
+    queryKey: ['paymentHistory', currentPage, rowPerPage, sortOrder],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/payroll/${user?.email}?page=${currentPage}&size=${rowPerPage}`)
+      const res = await axiosSecure.get(`/payroll/${user?.email}?page=${currentPage}&size=${rowPerPage}&sortOrder=${sortOrder}`)
       // console.log("response paisi",res.data)
       return res.data
     }
@@ -70,14 +71,32 @@ const PaymentHistory = () => {
       </div>
     );
   }
+  
+  const handleSort = (event) => {
+    const sortOrder = event.target.value;
+    console.log(sortOrder); 
+    if (sortOrder === 'desc') {
+        setSortOrder("desc") ; 
+    } else if (sortOrder === 'asc') {
+        setSortOrder("asc") ;
+    }
+  };
 
   return (
     <div className="">
       <Helmet>
         <title>Work Stream | Payment History</title>
       </Helmet>
-      <h1 data-aos="fade-left" className="my-5 text-center text-2xl md:text-4xl font-bold font-serif"> payment History</h1>
-
+     <div className="grid grid-cols-1 items-center md:grid-cols-2 justify-center md:justify-between">
+     <h1 data-aos="fade-left" className="my-5 text-2xl md:text-4xl font-bold font-serif"> payment History</h1>
+ <div className="flex justify-end">
+ <select onChange={handleSort} className="select select-bordered max-w-xs">
+  <option disabled selected>Sort by Date</option>
+  <option value="desc">Descending Order</option>
+  <option value="asc">Ascending Order</option>
+</select>
+ </div>
+     </div>
       <div data-aos="fade-right" className="p-5 rounded-xl bg-base-200 mb-5">
         <div className="overflow-x-auto">
           <table data-aos="fade-right" className="table bg-white text-center">
