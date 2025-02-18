@@ -169,7 +169,7 @@ const AllEmployeeList = () => {
                                                         : <button
                                                             onClick={() => handleMakeHR(user)}
                                                             disabled={user.isActive ? false: true}
-                                                            className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Make HR</button>
+                                                            className="btn w-32 bg-blue-100 text-blue-700 hover:bg-blue-200">Make HR</button>
                                                 }
                                             </td>
                                             <td>
@@ -177,7 +177,7 @@ const AllEmployeeList = () => {
                                                     user?.isActive
                                                         ? <button
                                                             onClick={() => handleFire(user)}
-                                                            className="btn bg-red-100 text-red-700 hover:bg-red-200">Fire</button>
+                                                            className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Fire</button>
                                                         : <p className="text-red-600 font-bold">Fired</p>
                                                 }
                                             </td>
@@ -185,7 +185,7 @@ const AllEmployeeList = () => {
                                                 <button
                                                     onClick={() => handleIncreaseSalaryModal(user)}
                                                     disabled={user.isActive ? false: true}
-                                                    className="btn bg-green-100 text-green-700 hover:bg-green-200">Promotion</button>
+                                                    className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Promotion</button>
                                             </td>
                                         </tr>)
                                     }
@@ -217,14 +217,14 @@ const AllEmployeeList = () => {
                                                 <button
                                                     onClick={() => handleIncreaseSalaryModal(user)}
                                                     disabled={user.isActive ? false: true}
-                                                    className="btn bg-green-100 text-green-700 hover:bg-green-200">Promotion</button>
+                                                    className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Promotion</button>
 
                                         </div>
                                         {
                                                     user?.isActive
                                                         ? <button
                                                             onClick={() => handleFire(user)}
-                                                            className="btn bg-red-100 text-red-700 hover:bg-red-200">Fire</button>
+                                                            className="btn bg-white text-blue-700 hover:bg-white border-blue-700">Fire</button>
                                                         : <p className="text-red-600 font-bold text-center pt-4">Employee Fired</p>
                                                 }
                                     </div>
@@ -234,10 +234,10 @@ const AllEmployeeList = () => {
                     </div>
             }
 
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-8 ">
                 <button
                     onClick={() => setIsTableView(!isTableView)}
-                    className="btn "
+                    className="btn bg-white text-blue-700 hover:bg-white border-blue-700"
                 >Change View</button>
             </div>
 

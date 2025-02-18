@@ -18,6 +18,8 @@ import HrRoute from "../Authentication/VerifiesRoutes/HrRoute";
 import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
 import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
 import DashboardWelcome from "../Layout/Dashboard/DashboardWelcome";
+import Blogs from "../Layout/Home/Blogs/Blogs";
+import Services from "../Layout/Home/Services/Services";
 
   const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ import DashboardWelcome from "../Layout/Dashboard/DashboardWelcome";
         {
             path:'/contacts',
             element: <Contacts></Contacts>
+        },
+        {
+            path:'/blogs',
+            element: <Blogs></Blogs>
+        },
+        {
+            path:'/services',
+            element: <Services></Services>
         },
         {
             path:'/login',

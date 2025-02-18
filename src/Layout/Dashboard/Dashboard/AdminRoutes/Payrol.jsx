@@ -95,7 +95,7 @@ setModalData(request) ;
                                         ? true 
                                         : false
                                     }
-                                    onClick={() => handlePayment(request)} className="btn">Pay</button></td>
+                                    onClick={() => handlePayment(request)} className="btn bg-white text-blue-700 border-blue-700 hover:bg-blue-100 hover:border-blue-700">Pay</button></td>
                                 </tr>)
                             }
 

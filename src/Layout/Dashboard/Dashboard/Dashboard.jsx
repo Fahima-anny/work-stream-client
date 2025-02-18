@@ -68,7 +68,7 @@ console.log(role);
 
 
 
-  <div className="drawer-side">
+  <div className="drawer-side dashboard">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-4">
       {/* Sidebar content here */}
