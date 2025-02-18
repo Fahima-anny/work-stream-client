@@ -1,4 +1,4 @@
-import { TiArrowForward } from "react-icons/ti";
+// import { TiArrowForward } from "react-icons/ti";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
@@ -15,9 +15,9 @@ const FAQ = () => {
     return (
         <>
          <div className="text-center mx-auto max-w-4xl  md:pb-10">
-         <h3 className="w-fit mx-auto bg-blue-100 border border-blue-700 rounded-lg py-1 px-2 text-blue-600 font-semibold flex items-center mb-3"><TiArrowForward className="text-2xl" />Quick Answers </h3>
+         {/* <h3 className="w-fit mx-auto bg-blue-100 border border-blue-700 rounded-lg py-1 px-2 text-blue-600 font-semibold flex items-center mb-3"><TiArrowForward className="text-2xl" />Quick Answers </h3> */}
                             <h1 className="my-5 text-2xl md:text-4xl font-bold font-serif">Frequently Asked Questions</h1>
-                            <p className="text-gray-600">Browse through our frequently asked questions to discover more about our platform’s features, security measures, how it works, and get all the information you need to make the most out of it.</p>
+                            <p className="text-gray-500">Browse through our frequently asked questions to discover more about our platform’s features, security measures, how it works, and get all the information you need to make the most out of it.</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-8 justify-between items-center">

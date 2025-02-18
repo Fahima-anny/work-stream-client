@@ -36,7 +36,7 @@ const Footer = () => {
 </footer>
 <footer className="footer footer-center bg-base-200 text-black p-4 border-t-2 border-t-gray-300">
   <aside>
-    <p className="text-gray-600">Copyright © {new Date().getFullYear()} - All right reserved by WorkStream</p>
+    <p className="text-gray-500">Copyright © {new Date().getFullYear()} - All right reserved by WorkStream</p>
   </aside>
 </footer>
         </div>

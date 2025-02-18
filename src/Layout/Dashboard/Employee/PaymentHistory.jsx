@@ -66,7 +66,7 @@ const PaymentHistory = () => {
   if (paymentHistory?.length === 0) {
     return (
       <div className="min-h-[80vh] flex justify-center items-center">
-        <p className="text-gray-600 text-xl">No payment history found.</p>
+        <p className="text-gray-500 text-xl">No payment history found.</p>
       </div>
     );
   }
@@ -107,7 +107,7 @@ const PaymentHistory = () => {
  <div className="flex justify-center gap-5 items-center">
   <IoIosArrowBack 
   onClick={handlePrev}
-   className="text-2xl text-gray-400 hover:text-gray-600 cursor-pointer"/>
+   className="text-2xl text-gray-400 hover:text-gray-500 cursor-pointer"/>
           {
             pages?.map((page) => <button
             onClick={() => setCurrentPage(page+1)}
@@ -117,7 +117,7 @@ const PaymentHistory = () => {
           }
         <IoIosArrowForward 
         onClick={handleNext}
-        className="text-2xl text-gray-400 hover:text-gray-600 cursor-pointer"/>
+        className="text-2xl text-gray-400 hover:text-gray-500 cursor-pointer"/>
         </div>
 
 
