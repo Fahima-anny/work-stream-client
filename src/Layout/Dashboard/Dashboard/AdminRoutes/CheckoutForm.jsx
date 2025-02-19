@@ -14,12 +14,12 @@ const CheckoutForm = ({modalData, setShowPayModal, refetch}) => {
     const [clientSecret, setClientSecret] = useState("") ;
     const axiosSecure = useAxiosSecure() ;
     const {user} = useAuth() ;
-    console.log(modalData.salary);
+    // console.log(modalData.salary);
 
     useEffect(() => {
      axiosSecure.post("/create-payment-intent", {price: modalData.salary})
      .then(res => {
-        console.log(res.data.clientSecret);
+        // console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret) ;
      })
     }, [modalData.salary, axiosSecure])
@@ -41,11 +41,11 @@ const handleSubmit = async (e) => {
     })
 
     if(error){
-        console.log("Payment error" , error);
+        // console.log("Payment error" , error);
         setErrorMsg(error.message)
     }
     else{
-        console.log("Payment Method", paymentMethod);
+        // console.log("Payment Method", paymentMethod);
         setErrorMsg(null)
     }
 
@@ -64,7 +64,7 @@ const handleSubmit = async (e) => {
         console.log("confirm error : ", confirmError);
     }
     else{
-        console.log("payment Intent", paymentIntent);
+        // console.log("payment Intent", paymentIntent);
         if(paymentIntent.status === "succeeded"){
             setShowPayModal(false)
             paymentTime = new Date(paymentIntent.created * 1000).toISOString().split('T')[0]

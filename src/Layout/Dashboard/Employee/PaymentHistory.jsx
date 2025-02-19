@@ -45,7 +45,7 @@ const PaymentHistory = () => {
 
   const numberOfPages = Math.ceil(totalCount / rowPerPage)
   const pages = [...Array(numberOfPages).keys()]
-  console.log(pages);
+  // console.log(pages);
 
   const handlePrev = () => {
     if(currentPage > 1){
@@ -74,7 +74,7 @@ const PaymentHistory = () => {
   
   const handleSort = (event) => {
     const sortOrder = event.target.value;
-    console.log(sortOrder); 
+    // console.log(sortOrder); 
     if (sortOrder === 'desc') {
         setSortOrder("desc") ; 
     } else if (sortOrder === 'asc') {

@@ -47,7 +47,7 @@ useEffect(() => {
     refetch() ;
 }, [userWorkSheet, refetch])
 
-    console.log(sort);
+    // console.log(sort);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -61,10 +61,10 @@ useEffect(() => {
             email: user.email,
             date: selectedDate.toISOString()
         }
-        console.log(workSheetData);
+        // console.log(workSheetData);
         axiosSecure.post("/work-sheet", workSheetData)
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             if(res.data.insertedId){
                 Swal.fire({
                     icon: "success",
@@ -85,7 +85,7 @@ useEffect(() => {
         setIsModalOpen(true);
         setEditWorkData(work) ;
         setSelectedDate(work.date)
-        console.log(work);
+        // console.log(work);
     }
 
 const handleEditWorkSheet = (e) => {
@@ -100,10 +100,10 @@ const handleEditWorkSheet = (e) => {
         email: user.email,
         date: selectedDate
     }
-    console.log(updatedWorkSheetData);
+    // console.log(updatedWorkSheetData);
       axiosSecure.patch(`/work-sheet/${editWorkData._id}`, updatedWorkSheetData )
        .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         //  if success close modal 
         if(res.data.modifiedCount >0){
       setIsModalOpen(false);
@@ -147,7 +147,7 @@ Swal.fire({
 
     }
 
-    console.log(editWorkData);
+    // console.log(editWorkData);
 
     if(userWorkPending){
         return <div className="min-h-[80vh] flex justify-center items-center">

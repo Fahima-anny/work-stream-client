@@ -30,15 +30,15 @@ const Payrol = () => {
         queryKey: ['paymentRequests'],
         queryFn: async () => {
             const result = await axiosSecure.get("/payroll")
-            console.log(result.data);
+            // console.log(result.data);
             return result.data;
         }
     })
 
-    console.log(paymentRequests);
+    // console.log(paymentRequests);
 
     const handlePayment = (request) => {
-        console.log("pay", request);
+        // console.log("pay", request);
         // navigate("/dashboard/payment")
 setShowPayModal(true)
 setModalData(request) ;

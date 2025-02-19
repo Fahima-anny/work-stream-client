@@ -26,7 +26,7 @@ const Progress = () => {
         queryKey: ["allEmployeeProgress"],
         queryFn: async () => {
             const res = await axiosSecure.get("/work-sheet")
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         },
         onSuccess: (data) => setSortedData(data),
@@ -39,7 +39,7 @@ const Progress = () => {
     }, [allEmployee]);
 
     // setSortedData(allEmployee)
-    console.log(sortedData);
+    // console.log(sortedData);
 
     const handleSearchByName = (e) => {
         const searchValue = e.target.value.toLowerCase();

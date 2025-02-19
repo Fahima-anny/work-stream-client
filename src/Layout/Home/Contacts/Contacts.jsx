@@ -21,7 +21,7 @@ const Contacts = () => {
     queryKey: ['messages' , userRole],
     queryFn: async () => {
       const res = await axiosSecure.get("/adminMails")
-      console.log("messages",res.data);
+      // console.log("messages",res.data);
       return res.data
     }
     ,
@@ -34,12 +34,12 @@ const Contacts = () => {
     const form = e.target;
     const name = form.name.value;
     const message = form.message.value;
-    console.log(name, message);
+    // console.log(name, message);
 
 
             axiosPublic.post("/adminMails", { name, message })
               .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                   Swal.fire({
                     icon: "success",

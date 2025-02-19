@@ -12,24 +12,24 @@ export const OverviewEmployee = () => {
   const axiosSecure = useAxiosSecure();
   const [userWorkSheet, userWorkPending] = useUserWorkSheet();
 
-  console.log(userWorkSheet);
+//   console.log(userWorkSheet);
 
   const { data: paymentHistory, isPending: paymentHistoryLoading } = useQuery({
     queryKey: ['paymentHistory2'],
     queryFn: async () => {
       const res = await axiosSecure.get(`/payroll/${user?.email}`);
-      console.log("response paisi", res.data);
+    //   console.log("response paisi", res.data);
       return res.data;
     }
   });
 
   const totalSalaryPaid = paymentHistory?.data?.reduce((total, entry) => total + Number(entry.salary), 0) || 0;
 
-  console.log("Total Salary Paid:", totalSalaryPaid);
+//   console.log("Total Salary Paid:", totalSalaryPaid);
 
   const totalHoursWorked = userWorkSheet.reduce((total, entry) => total + Number(entry.hoursWorked), 0);
 
-  console.log("Total Hours Worked:", totalHoursWorked);
+//   console.log("Total Hours Worked:", totalHoursWorked);
 
   // Aggregate hours worked per task
   const taskHoursData = userWorkSheet.reduce((acc, entry) => {

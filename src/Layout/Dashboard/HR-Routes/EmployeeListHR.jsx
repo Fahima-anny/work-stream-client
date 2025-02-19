@@ -34,14 +34,14 @@ const EmployeeListHR = () => {
         },
       });
 
-      console.log(usersData);
+      // console.log(usersData);
 
 const handleVerification = (id, verifiedStatus) => {
-console.log(verifiedStatus);
+// console.log(verifiedStatus);
 
 axiosSecure.patch(`/users/${id}`, {status: !verifiedStatus} )
 .then(res => {
-    console.log(res.data);
+    // console.log(res.data);
     if(res.data.modifiedCount > 0){
         Swal.fire({
             icon: "success",
@@ -56,7 +56,7 @@ axiosSecure.patch(`/users/${id}`, {status: !verifiedStatus} )
 
 const handleSort = (event) => {
   const sortOrder = event.target.value;
-  console.log(sortOrder); 
+  // console.log(sortOrder); 
   if (sortOrder === 'desc') {
       setSortOrder("desc") ; 
       // refetch()
@@ -86,11 +86,11 @@ const payrollData = {
     email: makePayment.email,
     name: makePayment.name,
 }
-console.log(payrollData);
-
+// console.log(payrollData);
+// 
 axiosSecure.post("/payroll", payrollData)
 .then(res => {
-    console.log(res.data)
+    // console.log(res.data)
     if(res.data.insertedId){
         Swal.fire({
             icon: "success",

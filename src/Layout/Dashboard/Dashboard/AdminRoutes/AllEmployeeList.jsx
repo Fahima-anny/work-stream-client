@@ -91,12 +91,12 @@ const AllEmployeeList = () => {
     const handleIncreaseSalary = (e) => {
         e.preventDefault();
         const newSalary = parseInt(e.target.newSalary.value);
-        console.log(newSalary);
+        // console.log(newSalary);
 
         if (newSalary > promotionModalData.salary) {
             axiosSecure.patch(`/users/promotion/${promotionModalData._id}`, { salary: newSalary })
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     if (res.data.modifiedCount > 0) {
                         e.target.reset();
                         setPromotionalModal(false);
@@ -122,7 +122,7 @@ const AllEmployeeList = () => {
 
       const handleSort = (event) => {
         const sortOrder = event.target.value;
-        console.log(sortOrder); 
+        // console.log(sortOrder); 
         if (sortOrder === 'desc') {
             setSortOrder("desc") ; 
         } else if (sortOrder === 'asc') {
