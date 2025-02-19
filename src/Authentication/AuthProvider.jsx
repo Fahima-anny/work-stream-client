@@ -59,14 +59,14 @@ return data ;
 enabled: !!user?.email,
 })
 
-console.log("role:", userRole);
+// console.log("role:", userRole);
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             // setProfilePic(currentUser?.photoURL) ;
             // setProfileName(currentUser?.displayName)
-            console.log("current user : ", currentUser);
+            // console.log("current user : ", currentUser);
             if(currentUser && userData.data){
             //   get token and save in client side 
             const userInfo = { email: currentUser.email , role: userData?.data}

@@ -30,7 +30,7 @@ const useAxiosSecure = () => {
 if(status === 401 || status === 403){
      signOutUser()
      .then(() => {
-        console.log("kala vai sada hoye asen");
+        // console.log("kala vai sada hoye asen");
      })
 navigate("/login")
 }

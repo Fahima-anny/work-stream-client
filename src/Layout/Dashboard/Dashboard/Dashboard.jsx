@@ -4,12 +4,15 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Helmet } from "react-helmet-async";
 // import useAuth from "../../../Hooks/useAuth";
 // import { toast } from "react-toastify";
-import { FaHome, FaRegUserCircle } from "react-icons/fa";
-import { TiContacts } from "react-icons/ti";
+import { FaRegUserCircle } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
 import { FaClipboardList, FaList } from "react-icons/fa6";
 import { LuBadgeDollarSign } from "react-icons/lu";
 import { HiOutlineChartPie } from "react-icons/hi";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { BsInfoCircle } from "react-icons/bs";
+import { GoHome } from "react-icons/go";
+import { LiaPhoneVolumeSolid } from "react-icons/lia";
 
 // import useAuth from "../../../Hooks/useAuth";
 
@@ -22,7 +25,7 @@ const [role , roleLoading] = useRoleCheck() ;
 // const [isHR, isHRLoading] = useHR() ;
 // const {user} = useAuth() ;
 
-console.log(role);
+// console.log(role);
 
 // const handleLogOout = () => {
 //       signOutUser()
@@ -63,7 +66,7 @@ if(roleLoading){
 
 
 
-  <div className="drawer-side">
+  <div className="drawer-side" data-theme="night">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-4">
       {/* Sidebar content here */}
@@ -76,33 +79,34 @@ if(roleLoading){
 
    { role === "admin"  
     && <>
-    <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl ml-1"/>Profile</NavLink></li>
-    <li><NavLink to="/dashboard/overview" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl "/>Overview</NavLink></li>
-    <li><NavLink to="/dashboard/all-employee-list" className="flex gap-2 items-center"><FaList className="text-sm ml-1"/>All Employee List</NavLink></li>
+    <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl "/>Profile</NavLink></li>
+    <li><NavLink to="/dashboard/overview-admin" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl "/>Overview</NavLink></li>
+    <li><NavLink to="/dashboard/all-employee-list" className="flex gap-2 items-center"><FaList className="text-sm "/>All Employee List</NavLink></li>
     <li><NavLink to={`/dashboard/payroll`} className="flex gap-2 items-center"><LuBadgeDollarSign className="text-xl"/>Payroll</NavLink></li>
    </>
    }
   {   role === "HR" 
     && <>
-      <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl ml-1"/>Profile</NavLink></li>
-      <li><NavLink to="/dashboard/overview" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl"/>Overview</NavLink></li>
+      <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl "/>Profile</NavLink></li>
+      <li><NavLink to="/dashboard/overview-hr" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl"/>Overview</NavLink></li>
     <li><NavLink to={`/dashboard/employee-list`} className="flex gap-2 items-center"><FaClipboardList className="text-xl"/>Employee List</NavLink></li>
     <li><NavLink to={`/dashboard/progress`} className="flex gap-2 items-center"><GiProgression className="text-xl"/>Progress</NavLink></li>
    </>}
  {  role === "Employee"  && <>
-  <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl ml-1"/>Profile</NavLink></li>
-  <li><NavLink to="/dashboard/overview" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl"/>Overview</NavLink></li>
-  <li><NavLink to="/dashboard/work-sheet" className="flex gap-2 items-center"><FaList className="text-sm ml-1"/>Work Sheet</NavLink></li>
+  <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl "/>Profile</NavLink></li>
+  <li><NavLink to="/dashboard/overview-employee" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl"/>Overview</NavLink></li>
+  <li><NavLink to="/dashboard/work-sheet" className="flex gap-2 items-center"><FaList className="text-sm "/>Work Sheet</NavLink></li>
   <li><NavLink to="/dashboard/payment-history" className="flex gap-2 items-center"><LuBadgeDollarSign className="text-xl"/>Payment History</NavLink></li>
     </>}
 
 <div className="divider"></div>
 
-    <li><NavLink to="/" className="flex gap-2 items-center"><FaHome className="text-2xl ml-1"/>Home</NavLink></li>
-    <li><NavLink to="/contacts" className="flex gap-2 items-center"><TiContacts className="text-2xl"/>Contacts</NavLink></li>
+    <li><NavLink to="/" className="flex gap-2 items-center"><GoHome className="text-2xl "/>Home</NavLink></li>
+    <li><NavLink to="/blogs" className="flex gap-2 items-center"><IoDocumentTextOutline className="text-2xl"/>Blogs</NavLink></li>
+    <li><NavLink to="/about" className="flex gap-2 items-center"><BsInfoCircle className="text-xl"/>About</NavLink></li>
+    <li><NavLink to="/contacts" className="flex gap-2 items-center"><LiaPhoneVolumeSolid className="text-xl"/>Contacts</NavLink></li>
 
-
-    {/* <li><button onClick={handleLogOout} className="flex gap-2 items-center"><FaSignOutAlt className="text-xl ml-1"/>Logout </button></li> */}
+    {/* <li><button onClick={handleLogOout} className="flex gap-2 items-center"><FaSignOutAlt className="text-xl "/>Logout </button></li> */}
      
     </ul>
 

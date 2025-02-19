@@ -11,7 +11,7 @@ const {data: isHR ,isPending: isHRLoading} = useQuery({
     queryKey: [user?.email, 'isHR'],
     queryFn: async () => {
         const res = await axiosSecure.get(`/users/role/${user?.email}`) ;
-        console.log(res.data);
+        // console.log(res.data);
         return res.data?.hr ;
     }
 })

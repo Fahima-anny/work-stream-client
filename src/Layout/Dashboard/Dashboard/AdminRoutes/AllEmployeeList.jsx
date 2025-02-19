@@ -29,16 +29,16 @@ const AllEmployeeList = () => {
         queryKey: ["allVerifiedEmployee", sortOrder],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/verified?sortOrder=${sortOrder}`)
-            console.log(res.data);
+            // console.log(res.data);
             return res.data;
         }
     })
 
     const handleMakeHR = (user) => {
-        console.log(user);
+        // console.log(user);
         axiosSecure.patch(`/users/make-admin/${user._id}`)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: `${user.name} (HR)!`,
@@ -52,7 +52,7 @@ const AllEmployeeList = () => {
     }
 
     const handleFire = (user) => {
-        console.log(user);
+        // console.log(user);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -65,7 +65,7 @@ const AllEmployeeList = () => {
             if (result.isConfirmed) {
                 axiosSecure.patch(`/users/fire/${user._id}`)
                     .then(res => {
-                        console.log(res.data);
+                        // console.log(res.data);
                         if (res.data.modifiedCount > 0) {
                             Swal.fire({
                                 title: `${user.name} is Fired!`,
@@ -84,7 +84,7 @@ const AllEmployeeList = () => {
 
     const handleIncreaseSalaryModal = (user) => {
         setPromotionalModal(true);
-        console.log(user.name);
+        // console.log(user.name);
         setPromotionModalData(user);
     }
 

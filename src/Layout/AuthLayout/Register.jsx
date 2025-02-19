@@ -31,7 +31,7 @@ const axiosPublic = useAxiosPublic() ;
 
     const { register, handleSubmit } = useForm()
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
             ;
         if (!regex.test(data.pass)) {
@@ -48,17 +48,17 @@ const axiosPublic = useAxiosPublic() ;
                 "content-type": "multipart/form-data"
             }
         })
-        console.log(res.data.data.display_url);
+        // console.log(res.data.data.display_url);
         if (res.data.success) {
             signUp(data.email, data.pass)
                 .then(response => {
-                    console.log(response.user);
+                    // console.log(response.user);
                     if(response.user){
                         updateUserInfo({displayName: data.name
                             , photoURL: res.data.data.display_url
                         })
                         .then(() => {
-                            console.log("user info updated");
+                            // console.log("user info updated");
 
 const userInfo = {
     name: data.name,
@@ -94,7 +94,7 @@ axiosPublic.post("/users", userInfo)
    // first do google login
    googleLogin()
    .then(async res => {
-     console.log(res.user)
+    //  console.log(res.user)
    const userInfo = {
      email: res.user.email,
      name: res.user.displayName
@@ -121,7 +121,7 @@ axiosPublic.post("/users", userInfo)
          // login user 
          axiosPublic.post("/users",userInfo)
          .then(response => {
-           console.log(response.data);
+        //    console.log(response.data);
            //  if he is not in userDB it will insert and open profile update modal 
            if(response.data.insertedId){
            document.getElementById('my_modal_5').showModal()
@@ -147,7 +147,7 @@ axiosPublic.post("/users", userInfo)
      const designation = form.designation.value ;
      const bankAcc = form.bankAcc.value ;
     //  const employee = form.employee.value ;
-     console.log(salary, bankAcc, designation);
+    //  console.log(salary, bankAcc, designation);
     
     const updatedInfo = {
       salary, designation, bankAcc, image:user.photoURL
@@ -155,7 +155,7 @@ axiosPublic.post("/users", userInfo)
     
     axiosPublic.put(`/users/${user?.email}`, updatedInfo)
     .then(res => {
-      console.log(res.data);
+    //   console.log(res.data);
       document.getElementById('my_modal_4').close() ;
       form.reset() ;
       navigate('/') ;

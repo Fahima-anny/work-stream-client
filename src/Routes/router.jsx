@@ -19,11 +19,12 @@ import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
 import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
 import ProfilePage from "../Layout/Dashboard/ProfilePage";
 import Blogs from "../Layout/Home/Blogs/Blogs";
-import Services from "../Layout/Home/Services/Services";
-import AboutUs from "../Layout/Home/Home/AboutUs";
 import About from "../Layout/Home/About/About";
 import ErrorPage from "../Layout/ErrorPage/ErrorPage";
-import Overview from "../Layout/Dashboard/Overview/Overview";
+import OverviewEmployee from "../Layout/Dashboard/Overview/OverviewEmployee";
+import OverviewHR from "../Layout/Dashboard/Overview/OverviewHR";
+import OverviewAdmin from "../Layout/Dashboard/Overview/OverviewAdmin";
+
 
   const router = createBrowserRouter([
     {
@@ -72,16 +73,15 @@ import Overview from "../Layout/Dashboard/Overview/Overview";
           element:<PrivateRoute> <ProfilePage></ProfilePage></PrivateRoute>
         },
 
-        { 
-          path:"overview",
-          element:<PrivateRoute> <Overview></Overview></PrivateRoute>
-        },
-
         // employee routes 
         {
           path:"work-sheet",
           element: <EmployeeRoute><WorkSheet></WorkSheet></EmployeeRoute>,
 
+        },
+        { 
+          path:"overview-employee",
+          element:<EmployeeRoute> <OverviewEmployee></OverviewEmployee></EmployeeRoute>
         },
         {
           path:"payment-history",
@@ -102,6 +102,10 @@ import Overview from "../Layout/Dashboard/Overview/Overview";
           path:"progress",
           element: <HrRoute><Progress></Progress></HrRoute>
         },
+        { 
+          path:"overview-hr",
+          element:<HrRoute> <OverviewHR></OverviewHR></HrRoute>
+        },
 
         // admin routes 
         {
@@ -111,6 +115,10 @@ import Overview from "../Layout/Dashboard/Overview/Overview";
         {
           path:"payroll",
           element: <AdminRoute><Payrol></Payrol></AdminRoute>
+        },
+        { 
+          path:"overview-admin",
+          element:<AdminRoute> <OverviewAdmin></OverviewAdmin></AdminRoute>
         },
       ]
     }

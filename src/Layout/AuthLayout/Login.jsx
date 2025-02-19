@@ -47,7 +47,7 @@ const handleLogin =async e => {
     const form = e.target ;
     const email = form.email.value ;
     const pass = form.pass.value ;
-    console.log(email, pass);
+    // console.log(email, pass);
 // setEmailCheck(email)
 
 const res = await axiosPublic.get(`/users/fired?email=${email}`)
@@ -75,7 +75,7 @@ if(isActive === true){
         form.reset() ;
       })
       .catch(er => {
-        console.log(er);
+        // console.log(er);
         toast.error(er.message.replace("Firebase:", "").trim())
       })
     }
@@ -87,7 +87,7 @@ const handleGoogleLoginPopup = async () => {
 // first do google login
 googleLogin()
 .then(async res => {
-  console.log(res.user)
+  // console.log(res.user)
 const userInfo = {
   email: res.user.email,
   name: res.user.displayName
@@ -114,7 +114,7 @@ if(isActive === true){
       // login user 
       axiosPublic.post("/users",userInfo)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         //  if he is not in userDB it will insert and open profile update modal 
         if(response.data.insertedId){
         document.getElementById('my_modal_5').showModal()
@@ -140,7 +140,7 @@ const handleGoogleLogin = (e) => {
  const designation = form.designation.value ;
  const bankAcc = form.bankAcc.value ;
 //  const employee = form.employee.value ;
- console.log(salary, bankAcc, designation);
+//  console.log(salary, bankAcc, designation);
 
 const updatedInfo = {
   salary, designation, bankAcc, image:user.photoURL
@@ -148,7 +148,7 @@ const updatedInfo = {
 
 axiosPublic.put(`/users/${user?.email}`, updatedInfo)
 .then(res => {
-  console.log(res.data);
+  // console.log(res.data);
   document.getElementById('my_modal_5').close() ;
   form.reset() ;
   navigate(destination) ;

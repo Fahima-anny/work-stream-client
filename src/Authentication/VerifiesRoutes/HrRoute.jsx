@@ -20,7 +20,7 @@ const HrRoute = ({children}) => {
      
     signOutUser()
     .then(() => {
-        console.log("kala vai tumi sada hoye aso");
+        // console.log("kala vai tumi sada hoye aso");
     })
     return <Navigate to='/login'></Navigate>
     

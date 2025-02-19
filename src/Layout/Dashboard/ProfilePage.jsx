@@ -15,7 +15,7 @@ const { data: currentUser, isLoading: currentUserLoading } = useQuery({
     queryKey: ["currentUser"],
     queryFn: async () => {
         const res = await axiosSecure.get(`/users/role/${user.email}`)
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
     },
 })
@@ -24,7 +24,7 @@ const { data: userData, isLoading: userDataLoading } = useQuery({
     queryKey: ["userData"],
     queryFn: async () => {
         const res = await axiosSecure.get(`/user/data/${user.email}`)
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
     },
 })

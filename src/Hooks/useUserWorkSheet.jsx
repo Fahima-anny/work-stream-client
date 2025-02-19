@@ -11,13 +11,13 @@ const useUserWorkSheet = () => {
         queryKey: [user.email, 'userWorkSheet'],
         queryFn: async () => {
             const result = await axiosSecure.get(`/work-sheet/${user?.email}`) ;
-            console.log(result?.data);
+            // console.log(result?.data);
             return result?.data
         },
         enabled: !!user?.email
     })
 
-    console.log(userWorkSheet);
+    // console.log(userWorkSheet);
 
     return [userWorkSheet, userWorkPending, refetch]
 };
