@@ -99,11 +99,11 @@ const PaymentHistory = () => {
 </select>
  </div>
      </div>
-      <div data-aos="fade-right" className="p-5 rounded-xl bg-base-200 mb-5">
+      <div data-aos="fade-right"  className="p-1 border border-gray-500 rounded-lg mb-5">
         <div className="overflow-x-auto">
-          <table data-aos="fade-right" className="table bg-white text-center">
+          <table data-aos="fade-right" className="table text-center">
             {/* head */}
-            <thead>
+            <thead className="bg-accent text-base-content [&>tr>th]:text-base-content">
               <tr>
                 <th>#</th>
                 <th>Month-Year</th>
@@ -132,7 +132,7 @@ const PaymentHistory = () => {
           {
             pages?.map((page) => <button
             onClick={() => setCurrentPage(page+1)}
-            className={`btn ${currentPage === page+1?  "bg-blue-100 hover:bg-blue-100"  :""}`}
+            className={`btn ${currentPage === page+1?  "bg-base-300 hover:border hover:border-base-content"  :""}`}
             key={page}>{page+1}
             </button>)
           }

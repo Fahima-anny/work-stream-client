@@ -156,11 +156,11 @@ const AllEmployeeList = () => {
      </div>
             {
                 isTableView
-                    ? <div data-aos="fade-left" className="p-5 rounded-xl bg-base-200 mb-5">
+                    ? <div data-aos="fade-left" className="p-1 border border-gray-500 rounded-lg mb-5">
                         <div className="overflow-x-auto">
-                            <table data-aos="fade-left" className="table bg-white text-center">
+                            <table data-aos="fade-left" className="table text-center">
 
-                                <thead className="py-10">
+                                <thead className="bg-accent text-base-content [&>tr>th]:text-base-content py-10">
                                     <tr className="">
                                         <th>#</th>
                                         <th>Name</th>
@@ -186,7 +186,7 @@ const AllEmployeeList = () => {
                                                         : <button
                                                             onClick={() => handleMakeHR(user)}
                                                             disabled={user.isActive ? false: true}
-                                                            className="btn w-32 bg-blue-100 text-blue-700 hover:bg-blue-200">Make HR</button>
+                                                            className="btn bg-accent  duration-300 text-base-content hover:bg-accent">Make HR</button>
                                                 }
                                             </td>
                                             <td>
@@ -194,7 +194,7 @@ const AllEmployeeList = () => {
                                                     user?.isActive
                                                         ? <button
                                                             onClick={() => handleFire(user)}
-                                                            className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Fire</button>
+                                                            className="btn bg-accent  duration-300 text-base-content hover:bg-accent">Fire</button>
                                                         : <p className="text-red-600 font-bold">Fired</p>
                                                 }
                                             </td>
@@ -202,7 +202,7 @@ const AllEmployeeList = () => {
                                                 <button
                                                     onClick={() => handleIncreaseSalaryModal(user)}
                                                     disabled={user.isActive ? false: true}
-                                                    className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Promotion</button>
+                                                    className="btn bg-accent  duration-300 text-base-content hover:bg-accent">Promotion</button>
                                             </td>
                                         </tr>)
                                     }
@@ -229,19 +229,19 @@ const AllEmployeeList = () => {
                                                         : <button
                                                             onClick={() => handleMakeHR(user)}
                                                             disabled={user.isActive ? false: true}
-                                                            className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Make HR</button>
+                                                            className="btn bg-accent  duration-300 text-base-content hover:bg-accent">Make HR</button>
                                                 }
                                                 <button
                                                     onClick={() => handleIncreaseSalaryModal(user)}
                                                     disabled={user.isActive ? false: true}
-                                                    className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Promotion</button>
+                                                    className="btn bg-accent  duration-300 text-base-content hover:bg-accent">Promotion</button>
 
                                         </div>
                                         {
                                                     user?.isActive
                                                         ? <button
                                                             onClick={() => handleFire(user)}
-                                                            className="btn bg-white text-blue-700 hover:bg-white border-blue-700">Fire</button>
+                                                             className="btn border-base-content duration-300 text-base-content ">Fire</button>
                                                         : <p className="text-red-600 font-bold text-center pt-4">Employee Fired</p>
                                                 }
                                     </div>
@@ -254,7 +254,7 @@ const AllEmployeeList = () => {
             <div className="flex justify-center mt-8 ">
                 <button
                     onClick={() => setIsTableView(!isTableView)}
-                    className="btn bg-white text-blue-700 hover:bg-white border-blue-700"
+                    className="btn border-base-content duration-300 text-base-content "
                 >Change View</button>
             </div>
 
@@ -291,7 +291,7 @@ const AllEmployeeList = () => {
                                 </div>
 
 
-                                <button type="submit" className="btn bg-blue-100 text-blue-700 hover:bg-blue-200">Edit <FiEdit className="text-xl" /></button>
+                                <button type="submit" className="btn bg-accent  duration-300 text-base-content hover:bg-accent">Edit <FiEdit className="text-xl" /></button>
                             </form>
                         </div>
                     </div>

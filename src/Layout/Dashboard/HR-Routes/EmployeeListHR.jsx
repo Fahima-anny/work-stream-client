@@ -148,11 +148,11 @@ axiosSecure.post("/payroll", payrollData)
      </div>
 
 
-<div data-aos="fade-left" className="p-5 rounded-xl bg-base-200 mb-5">
+<div data-aos="fade-left" className="p-1 border border-gray-500 rounded-lg mb-5">
 <div className="overflow-x-auto">
-  <table data-aos="fade-left" className="table bg-white text-center">
+  <table data-aos="fade-left" className="table text-center">
     {/* head */}
-    <thead>
+    <thead className="bg-accent text-base-content [&>tr>th]:text-base-content">
       <tr>
         <th>#</th>
         <th>Name</th>

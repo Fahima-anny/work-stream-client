@@ -25,7 +25,7 @@ const EmployeeList = () => {
 
   
 
-  const { data: usersData = [], isLoading: usersDataLoading, refetch } = useQuery({
+  const { data: usersData = [], isLoading: usersDataLoading } = useQuery({
     queryKey: ["usersData"],
     queryFn: async () => {
       const response = await axiosSecure.get("/users");

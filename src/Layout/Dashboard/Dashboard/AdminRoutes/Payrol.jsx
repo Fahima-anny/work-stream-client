@@ -61,11 +61,11 @@ setModalData(request) ;
 
             <h1 data-aos="fade-left" className="my-5 text-center text-2xl md:text-4xl font-bold font-serif">Admin Payroll</h1>
 
-            <div data-aos="fade-right" className="p-5 rounded-xl bg-base-200 mb-5">
+            <div data-aos="fade-right" className="p-1 border border-gray-500 rounded-lg mb-5">
                 <div className="overflow-x-auto">
-                    <table data-aos="fade-right" className="table bg-white text-center">
+                    <table data-aos="fade-right" className="table text-center">
                         {/* head */}
-                        <thead>
+                        <thead className="bg-accent text-base-content [&>tr>th]:text-base-content">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
@@ -95,7 +95,7 @@ setModalData(request) ;
                                         ? true 
                                         : false
                                     }
-                                    onClick={() => handlePayment(request)} className="btn bg-white text-blue-700 border-blue-700 hover:bg-blue-100 hover:border-blue-700">Pay</button></td>
+                                    onClick={() => handlePayment(request)} className="btn bg-accent text-base-content  hover:bg-accent ">Pay</button></td>
                                 </tr>)
                             }
 

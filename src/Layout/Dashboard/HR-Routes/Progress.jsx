@@ -143,11 +143,11 @@ const Progress = () => {
             </div>
 
 
-            <div data-aos="fade-right" className="p-5 rounded-xl bg-base-200 mb-5">
+            <div data-aos="fade-right" className="p-1 border border-gray-500 rounded-lg mb-5">
                 <div className="overflow-x-auto">
-                    <table data-aos="fade-right" className="table bg-white text-center">
+                    <table data-aos="fade-right" className="table text-center">
 
-                        <thead>
+                        <thead className="bg-accent text-base-content [&>tr>th]:text-base-content">
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
@@ -168,13 +168,8 @@ const Progress = () => {
                                 <td>{data?.hoursWorked}</td>
                                 <td>{new Date(data?.date) // Convert the string to a Date object
                                     .toLocaleDateString("en-GB") // Format to DD/MM/YYYY
-                                    .split("/") // Split the date string by "/"
-                                    .join(".")}<span className="text-gray-400"></span></td>
-                                <td></td>
-                                <td>
-
-                                </td>
-
+                                    .split("/") 
+                                    .join(".")}</td>
                             </tr>)
                         }
 

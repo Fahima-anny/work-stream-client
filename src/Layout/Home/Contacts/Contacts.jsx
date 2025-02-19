@@ -192,7 +192,7 @@ const Contacts = () => {
                     ></textarea>
                   </div>
                   {/* Submit Button */}
-                  <button type="submit" className="btn bg-blue-100 hover:bg-blue-200 duration-300 text-blue-700">Send Message </button>
+                  <button type="submit" className="btn bg-accent text-base-content  hover:bg-accent  hover:border hover:border-base-content">Send Message </button>
                 </form>
               </div>
             </div>

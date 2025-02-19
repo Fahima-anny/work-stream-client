@@ -77,11 +77,11 @@ const EmployeeDetails = () => {
 
       <div
         data-aos="fade-up"
-        className="bg-gray-100 p-10 max-w-4xl mx-auto rounded-lg">
+        className="border border-gray-300 max-w-4xl mx-auto rounded-lg">
 
         <div
           data-aos="fade-up"
-          className=" bg-white p-5 rounded-xl ">
+          className="  p-5 rounded-xl ">
           <div className="flex gap-5">
             <img src={image}
               className="h-16 w-16 rounded-full object-cover object-center"
