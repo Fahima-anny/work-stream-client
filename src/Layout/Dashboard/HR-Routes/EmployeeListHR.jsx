@@ -24,11 +24,12 @@ const EmployeeListHR = () => {
         offset: 100,
       });
     }, []);
+    const [sortOrder, setSortOrder] = useState("")
 
     const { data: usersData = [], isLoading: usersDataLoading, refetch } = useQuery({
-        queryKey: ["usersData"],
+        queryKey: ["usersData", sortOrder],
         queryFn: async () => {
-          const response = await axiosSecure.get("/users");
+          const response = await axiosSecure.get(`/users?sortOrder=${sortOrder}`);
           return response.data;
         },
       });
@@ -51,8 +52,19 @@ axiosSecure.patch(`/users/${id}`, {status: !verifiedStatus} )
           refetch() ;
     }
 })
-
 }
+
+const handleSort = (event) => {
+  const sortOrder = event.target.value;
+  console.log(sortOrder); 
+  if (sortOrder === 'desc') {
+      setSortOrder("desc") ; 
+      // refetch()
+  } else if (sortOrder === 'asc') {
+      setSortOrder("asc") ;
+      // refetch()
+  }
+};
 
 const handlePay = (data) => {
 setMakePayment(data) ;
@@ -116,12 +128,24 @@ axiosSecure.post("/payroll", payrollData)
       <Helmet>
         <title>Work Stream | Employee List</title>
       </Helmet>
+
+      <div className="grid grid-cols-1 items-center md:grid-cols-2 justify-center md:justify-between">
       <h1
         data-aos="fade-right"
-        className="my-5 text-center text-2xl md:text-4xl font-bold font-serif"
+        className="my-5 text-2xl md:text-4xl font-bold font-serif"
       >
         Employee List
       </h1>
+ <div
+         data-aos="fade-left"
+ className="flex justify-end">
+ <select onChange={handleSort} className="select select-bordered max-w-xs">
+  <option disabled selected>Sort by Salary</option>
+  <option value="desc">Descending Order</option>
+  <option value="asc">Ascending Order</option>
+</select>
+ </div>
+     </div>
 
 
 <div data-aos="fade-left" className="p-5 rounded-xl bg-base-200 mb-5">
@@ -158,7 +182,7 @@ axiosSecure.post("/payroll", payrollData)
         <td><button 
         disabled={ data.isVerified ? false : true } 
         onClick={() => handlePay(data)}
-        className="btn rounded-lg text-2xl duration-300 text-white hover:bg-green-600 bg-green-500"><FaSackDollar /></button></td>
+        className="btn rounded-lg text-2xl duration-300 text-white hover:bg-blue-600 bg-blue-500"><FaSackDollar /></button></td>
         <td>
             <Link to={`/dashboard/details/${data._id}`} >
             <button className="btn rounded-lg text-xl duration-300 text-white hover:bg-blue-600 bg-blue-500"><FaEye /></button>

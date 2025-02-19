@@ -17,16 +17,18 @@ import EmployeeRoute from "../Authentication/VerifiesRoutes/EmployeeRoute";
 import HrRoute from "../Authentication/VerifiesRoutes/HrRoute";
 import AdminRoute from "../Authentication/VerifiesRoutes/AdminRoute";
 import EmployeeListHR from "../Layout/Dashboard/HR-Routes/EmployeeListHR";
-import DashboardWelcome from "../Layout/Dashboard/DashboardWelcome";
+import ProfilePage from "../Layout/Dashboard/ProfilePage";
 import Blogs from "../Layout/Home/Blogs/Blogs";
 import Services from "../Layout/Home/Services/Services";
 import AboutUs from "../Layout/Home/Home/AboutUs";
 import About from "../Layout/Home/About/About";
+import ErrorPage from "../Layout/ErrorPage/ErrorPage";
+import Overview from "../Layout/Dashboard/Overview/Overview";
 
   const router = createBrowserRouter([
     {
       path: "/",
-      errorElement: <p>error</p> ,
+      errorElement: <ErrorPage></ErrorPage> ,
       element: <Main></Main> ,
       children: [
         {
@@ -56,14 +58,23 @@ import About from "../Layout/Home/About/About";
       ]
     },
     {
-      path: 'dashboard',
+      path: '/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
 
         // common welcome route 
-        {
-          path:"/dashboard",
-          element:<PrivateRoute> <DashboardWelcome></DashboardWelcome></PrivateRoute>
+        // {
+        //   index: true,
+        //   element:<PrivateRoute> <ProfilePage></ProfilePage></PrivateRoute>
+        // },
+        { 
+          path:"profile",
+          element:<PrivateRoute> <ProfilePage></ProfilePage></PrivateRoute>
+        },
+
+        { 
+          path:"overview",
+          element:<PrivateRoute> <Overview></Overview></PrivateRoute>
         },
 
         // employee routes 

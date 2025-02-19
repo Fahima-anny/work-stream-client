@@ -89,7 +89,9 @@ const PaymentHistory = () => {
       </Helmet>
      <div className="grid grid-cols-1 items-center md:grid-cols-2 justify-center md:justify-between">
      <h1 data-aos="fade-left" className="my-5 text-2xl md:text-4xl font-bold font-serif"> payment History</h1>
- <div className="flex justify-end">
+ <div 
+         data-aos="fade-left"
+ className="flex justify-end">
  <select onChange={handleSort} className="select select-bordered max-w-xs">
   <option disabled selected>Sort by Date</option>
   <option value="desc">Descending Order</option>

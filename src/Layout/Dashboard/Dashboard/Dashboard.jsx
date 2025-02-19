@@ -4,11 +4,12 @@ import { MdOutlineMenu } from "react-icons/md";
 import { Helmet } from "react-helmet-async";
 // import useAuth from "../../../Hooks/useAuth";
 // import { toast } from "react-toastify";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaRegUserCircle } from "react-icons/fa";
 import { TiContacts } from "react-icons/ti";
 import { GiProgression } from "react-icons/gi";
 import { FaClipboardList, FaList } from "react-icons/fa6";
 import { LuBadgeDollarSign } from "react-icons/lu";
+import { HiOutlineChartPie } from "react-icons/hi";
 
 // import useAuth from "../../../Hooks/useAuth";
 
@@ -33,17 +34,11 @@ console.log(role);
 //         .catch(Er => console.log(Er))
 // }
 
-// if(roleLoading){
-//     return <div className="min-h-[80vh] flex justify-center items-center">
-//     <span className="loading loading-dots loading-lg"></span>
-//    </div>
-// }
-
-// if(isHRLoading){
-//     return <div className="min-h-[80vh] flex justify-center items-center">
-//     <span className="loading loading-dots loading-lg"></span>
-//    </div>
-// }
+if(roleLoading){
+    return <div className="min-h-[80vh] flex justify-center items-center">
+    <span className="loading loading-dots loading-lg"></span>
+   </div>
+}
 
     return (
         <div>
@@ -68,7 +63,7 @@ console.log(role);
 
 
 
-  <div className="drawer-side dashboard">
+  <div className="drawer-side">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
     <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 space-y-4">
       {/* Sidebar content here */}
@@ -81,16 +76,22 @@ console.log(role);
 
    { role === "admin"  
     && <>
+    <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl ml-1"/>Profile</NavLink></li>
+    <li><NavLink to="/dashboard/overview" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl "/>Overview</NavLink></li>
     <li><NavLink to="/dashboard/all-employee-list" className="flex gap-2 items-center"><FaList className="text-sm ml-1"/>All Employee List</NavLink></li>
     <li><NavLink to={`/dashboard/payroll`} className="flex gap-2 items-center"><LuBadgeDollarSign className="text-xl"/>Payroll</NavLink></li>
    </>
    }
   {   role === "HR" 
     && <>
+      <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl ml-1"/>Profile</NavLink></li>
+      <li><NavLink to="/dashboard/overview" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl"/>Overview</NavLink></li>
     <li><NavLink to={`/dashboard/employee-list`} className="flex gap-2 items-center"><FaClipboardList className="text-xl"/>Employee List</NavLink></li>
     <li><NavLink to={`/dashboard/progress`} className="flex gap-2 items-center"><GiProgression className="text-xl"/>Progress</NavLink></li>
    </>}
  {  role === "Employee"  && <>
+  <li><NavLink to="/dashboard/profile" className="flex gap-2 items-center"><FaRegUserCircle className="text-xl ml-1"/>Profile</NavLink></li>
+  <li><NavLink to="/dashboard/overview" className="flex gap-2 items-center"><HiOutlineChartPie className="text-xl"/>Overview</NavLink></li>
   <li><NavLink to="/dashboard/work-sheet" className="flex gap-2 items-center"><FaList className="text-sm ml-1"/>Work Sheet</NavLink></li>
   <li><NavLink to="/dashboard/payment-history" className="flex gap-2 items-center"><LuBadgeDollarSign className="text-xl"/>Payment History</NavLink></li>
     </>}
@@ -99,6 +100,8 @@ console.log(role);
 
     <li><NavLink to="/" className="flex gap-2 items-center"><FaHome className="text-2xl ml-1"/>Home</NavLink></li>
     <li><NavLink to="/contacts" className="flex gap-2 items-center"><TiContacts className="text-2xl"/>Contacts</NavLink></li>
+
+
     {/* <li><button onClick={handleLogOout} className="flex gap-2 items-center"><FaSignOutAlt className="text-xl ml-1"/>Logout </button></li> */}
      
     </ul>
