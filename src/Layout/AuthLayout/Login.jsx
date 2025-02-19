@@ -148,7 +148,7 @@ const updatedInfo = {
 
 axiosPublic.put(`/users/${user?.email}`, updatedInfo)
 .then(res => {
-  // console.log(res.data);
+  console.log(res.data);
   document.getElementById('my_modal_5').close() ;
   form.reset() ;
   navigate(destination) ;

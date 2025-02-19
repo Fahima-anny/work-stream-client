@@ -39,6 +39,15 @@ const OverviewHR = () => {
     totalHours,
   }));
 
+  if (allEmployeeLoading || usersDataLoading) {
+    return (
+      <div className="min-h-[80vh] flex justify-center items-center">
+        <span className="loading loading-dots loading-lg"></span>
+      </div>
+    );
+  }
+
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="navbar bg-base-100 mb-8">

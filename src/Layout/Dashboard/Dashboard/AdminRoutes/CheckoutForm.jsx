@@ -45,7 +45,7 @@ const handleSubmit = async (e) => {
         setErrorMsg(error.message)
     }
     else{
-        // console.log("Payment Method", paymentMethod);
+        console.log("Payment Method", paymentMethod);
         setErrorMsg(null)
     }
 
