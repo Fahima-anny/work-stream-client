@@ -30,17 +30,7 @@ const Login = () => {
 const navigate = useNavigate() ;
 const location = useLocation() ;
 const destination = location?.state || '/' ;
-// const [emailCheck, setEmailCheck] = useState(null) ;
 
-// const {data: isActiveData, isPending: activeDataLoading} = useQuery({
-//   queryKey: ['checkAccount'],
-//   queryFn: async () => {
-//    const res =await axiosPublic.get(`/users/fired?email=${emailCheck}`)
-//    console.log("bal",res.data.isActive);
-//    return res.data.isActive ;
-//   },
-//   enabled: !!emailCheck
-// })
 
 const handleLogin =async e => {
     e.preventDefault() ;

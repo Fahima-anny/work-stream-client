@@ -23,7 +23,7 @@ const Testimonials = () => {
     }, [])
 
     return (
-        <div className=" py-10 mb-20 bg-base-200">
+        <div className=" py-16 mb-20 bg-base-200">
             <div className=" mx-auto max-w-screen-xl px-3 xl:px-0 ">
 
             <div className="text-center mx-auto max-w-4xl">

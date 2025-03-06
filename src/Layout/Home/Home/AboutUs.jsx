@@ -9,7 +9,7 @@ const AboutUs = () => {
         <div className="py-5">
 
             
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pb-20">
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
   <div className="relative">
     <img
     className="xl:w-3/4 rounded-tr-2xl rounded-bl-2xl "

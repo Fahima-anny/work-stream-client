@@ -10,7 +10,7 @@ const EmployeeExperience = () => {
 
     return (
         <div className="bg-accent">
-            <div className="mx-auto max-w-screen-xl px-3 xl:px-0 py-10" ref={ref}>
+            <div className="mx-auto max-w-screen-xl px-3 xl:px-0 py-10 mt-4" ref={ref}>
                 <h3 className="w-fit mx-auto bg-blue-100 border border-blue-700 rounded-lg mt-5 py-1 px-2 text-blue-600 font-semibold flex items-center">
                     <TiArrowForward className="text-2xl " /> Employee Experience
                 </h3>
